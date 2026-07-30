@@ -10,4 +10,4 @@ Route::get('/{any}', function () {
         'siteName' => $setting?->site_name ?: 'Sapta Darma',
         'favicon' => $setting?->favicon ? asset('storage/' . $setting->favicon) : null,
     ]);
-})->where('any', '^(?!admin|api|storage|build|images).*$')->name('spa');
+})->where('any', '^(?!superadmin|api|storage|build|images).*$')->name('spa');

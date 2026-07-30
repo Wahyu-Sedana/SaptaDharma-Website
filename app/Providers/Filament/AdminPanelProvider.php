@@ -27,7 +27,7 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('admin')
-            ->path('admin')
+            ->path('superadmin')
             ->brandName('Sapta Darma')
             ->darkMode(false)
             ->brandLogo(function () {
