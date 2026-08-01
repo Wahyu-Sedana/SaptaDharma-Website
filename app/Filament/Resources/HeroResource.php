@@ -33,11 +33,11 @@ class HeroResource extends Resource
                             ->preload()
                             ->required(),
                         TranslatableTabs::make([
-                            'title' => fn (string $name) => Forms\Components\TextInput::make($name)
+                            'title' => fn(string $name) => Forms\Components\TextInput::make($name)
                                 ->label('Judul')
                                 ->required()
                                 ->maxLength(255),
-                            'subtitle' => fn (string $name) => Forms\Components\Textarea::make($name)
+                            'subtitle' => fn(string $name) => Forms\Components\Textarea::make($name)
                                 ->label('Subjudul')
                                 ->required(),
                         ]),
@@ -50,10 +50,12 @@ class HeroResource extends Resource
                             ->label('Gambar')
                             ->image()
                             ->directory('heroes')
+                            ->maxSize(2048)
                             ->required(),
                         Forms\Components\FileUpload::make('video')
                             ->label('Video (opsional)')
                             ->directory('videos')
+                            ->maxSize(51200)
                             ->acceptedFileTypes(['video/mp4', 'video/webm', 'video/ogg']),
                     ])
                     ->columns(2),
@@ -85,7 +87,7 @@ class HeroResource extends Resource
                     ->defaultImageUrl(asset('images/no-image.png')),
                 Tables\Columns\TextColumn::make('status')
                     ->badge()
-                    ->color(fn (string $state): string => $state === 'publish' ? 'success' : 'gray'),
+                    ->color(fn(string $state): string => $state === 'publish' ? 'success' : 'gray'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
