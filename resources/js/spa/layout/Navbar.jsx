@@ -16,7 +16,7 @@ export default function Navbar({ siteName, logo }) {
         { to: '/sejarah', label: t(locale, 'history') },
         { to: '/artikel', label: t(locale, 'articles') },
         { to: '/buku', label: t(locale, 'books') },
-        { to: '/lokasi', label: t(locale, 'locations') },
+        { to: '/sanggar', label: t(locale, 'locations') },
     ];
 
     useEffect(() => {

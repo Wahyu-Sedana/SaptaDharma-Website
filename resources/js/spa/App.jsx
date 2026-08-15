@@ -28,7 +28,7 @@ export default function App() {
                                 <Route path="/artikel/:slug" element={<ArticleDetail />} />
                                 <Route path="/buku" element={<Books />} />
                                 <Route path="/buku/:slug" element={<BookDetail />} />
-                                <Route path="/lokasi" element={<Locations />} />
+                                <Route path="/sanggar" element={<Locations />} />
                             </Route>
                         </Routes>
                     </BrowserRouter>

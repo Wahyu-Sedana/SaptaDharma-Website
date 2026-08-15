@@ -165,7 +165,7 @@ export default function Home() {
                         <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
                             <SectionHeading eyebrow={sections.locations.subtitle} title={sections.locations.title} />
                             <Link
-                                to="/lokasi"
+                                to="/sanggar"
                                 className="group inline-flex items-center gap-2 text-sm font-semibold text-green-600 hover:text-green-700"
                             >
                                 {sections.locations.button_text ?? 'Lihat Semua'}

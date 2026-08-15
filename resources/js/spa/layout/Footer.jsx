@@ -5,7 +5,7 @@ const LINKS = [
     { to: '/sejarah', label: 'Sejarah' },
     { to: '/artikel', label: 'Artikel' },
     { to: '/buku', label: 'Buku' },
-    { to: '/lokasi', label: 'Lokasi' },
+    { to: '/sanggar', label: 'Sanggar' },
 ];
 
 export default function Footer({ setting }) {
