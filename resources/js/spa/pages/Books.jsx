@@ -51,8 +51,8 @@ export default function Books() {
                             onClick={() => selectCategory('')}
                             className={`rounded-full px-4 py-2 text-sm font-medium transition ${
                                 !category
-                                    ? 'bg-orange-500 text-white shadow-lg shadow-orange-500/25'
-                                    : 'bg-slate-100 text-slate-600 hover:bg-orange-50'
+                                    ? 'bg-green-500 text-white shadow-lg shadow-green-500/25'
+                                    : 'bg-slate-100 text-slate-600 hover:bg-green-50'
                             }`}
                         >
                             Semua
@@ -64,8 +64,8 @@ export default function Books() {
                                 onClick={() => selectCategory(cat.slug)}
                                 className={`rounded-full px-4 py-2 text-sm font-medium transition ${
                                     category === cat.slug
-                                        ? 'bg-orange-500 text-white shadow-lg shadow-orange-500/25'
-                                        : 'bg-slate-100 text-slate-600 hover:bg-orange-50'
+                                        ? 'bg-green-500 text-white shadow-lg shadow-green-500/25'
+                                        : 'bg-slate-100 text-slate-600 hover:bg-green-50'
                                 }`}
                             >
                                 {cat.name}
@@ -91,10 +91,10 @@ export default function Books() {
                                         />
                                     </div>
                                     <div className="p-5">
-                                        <span className="inline-flex rounded-full bg-orange-50 px-2.5 py-0.5 text-xs font-semibold text-orange-600 uppercase">
+                                        <span className="inline-flex rounded-full bg-green-50 px-2.5 py-0.5 text-xs font-semibold text-green-600 uppercase">
                                             {book.category?.name}
                                         </span>
-                                        <h3 className="mt-2 line-clamp-2 font-semibold text-slate-900 transition group-hover:text-orange-600">
+                                        <h3 className="mt-2 line-clamp-2 font-semibold text-slate-900 transition group-hover:text-green-600">
                                             {book.title}
                                         </h3>
                                         <p className="mt-1 text-sm text-slate-500">{book.author}</p>
@@ -113,8 +113,8 @@ export default function Books() {
                                     onClick={() => goToPage(p)}
                                     className={`h-10 w-10 rounded-full text-sm font-medium transition ${
                                         meta.current_page === p
-                                            ? 'bg-orange-500 text-white shadow-lg shadow-orange-500/25'
-                                            : 'bg-slate-100 text-slate-600 hover:bg-orange-50'
+                                            ? 'bg-green-500 text-white shadow-lg shadow-green-500/25'
+                                            : 'bg-slate-100 text-slate-600 hover:bg-green-50'
                                     }`}
                                 >
                                     {p}

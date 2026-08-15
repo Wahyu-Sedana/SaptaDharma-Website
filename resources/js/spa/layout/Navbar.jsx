@@ -38,7 +38,7 @@ export default function Navbar({ siteName, logo }) {
                     {logo ? (
                         <img src={logo} alt={siteName ?? 'Sapta Darma'} className="h-9 w-auto object-contain" />
                     ) : (
-                        <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-amber-400 text-sm shadow-lg shadow-orange-500/30">
+                        <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-green-500 to-emerald-400 text-sm shadow-lg shadow-green-500/30">
                             SD
                         </span>
                     )}
@@ -54,7 +54,7 @@ export default function Navbar({ siteName, logo }) {
                                 end={link.to === '/'}
                                 className={({ isActive }) =>
                                     `rounded-full px-4 py-2 text-sm font-medium transition ${
-                                        isActive ? 'bg-orange-500 text-white shadow shadow-orange-500/30' : 'text-slate-200 hover:bg-white/10'
+                                        isActive ? 'bg-green-500 text-white shadow shadow-green-500/30' : 'text-slate-200 hover:bg-white/10'
                                     }`
                                 }
                             >
@@ -86,7 +86,7 @@ export default function Navbar({ siteName, logo }) {
                             onClick={() => setOpen(false)}
                             className={({ isActive }) =>
                                 `block rounded-xl px-4 py-3 text-sm font-medium ${
-                                    isActive ? 'bg-orange-500 text-white' : 'text-slate-200 hover:bg-white/5'
+                                    isActive ? 'bg-green-500 text-white' : 'text-slate-200 hover:bg-white/5'
                                 }`
                             }
                         >

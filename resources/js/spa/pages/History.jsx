@@ -36,13 +36,13 @@ export default function History() {
                     <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
                         <SectionHeading title={sections.timeline.title} align="center" />
 
-                        <div className="relative mt-14 space-y-10 border-l-2 border-orange-200 pl-10">
+                        <div className="relative mt-14 space-y-10 border-l-2 border-green-200 pl-10">
                             {timelines.map((item) => (
                                 <div key={item.id} className="relative">
-                                    <div className="absolute top-1 -left-[3.15rem] flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-amber-400 text-white shadow-lg shadow-orange-500/25">
+                                    <div className="absolute top-1 -left-[3.15rem] flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-green-500 to-emerald-400 text-white shadow-lg shadow-green-500/25">
                                         <i className={`${item.icon} text-xs`}></i>
                                     </div>
-                                    <span className="inline-flex rounded-full bg-orange-50 px-3 py-1 text-xs font-semibold text-orange-600">
+                                    <span className="inline-flex rounded-full bg-green-50 px-3 py-1 text-xs font-semibold text-green-600">
                                         {item.year}
                                     </span>
                                     <h3 className="mt-3 font-semibold text-slate-900">{item.title}</h3>
@@ -70,7 +70,7 @@ export default function History() {
                                         />
                                     </div>
                                     <h3 className="font-semibold text-slate-900">{founder.name}</h3>
-                                    <p className="text-sm font-medium text-orange-600">{founder.position}</p>
+                                    <p className="text-sm font-medium text-green-600">{founder.position}</p>
                                     <p className="mt-2 text-sm text-slate-500">{founder.description}</p>
                                 </div>
                             ))}

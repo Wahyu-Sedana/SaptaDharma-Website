@@ -18,7 +18,7 @@ export default function BookDetail() {
     return (
         <article>
             <section className="relative flex min-h-[65vh] items-center overflow-hidden bg-slate-950">
-                <div className="blob animate-float -top-24 -right-24 h-96 w-96 bg-orange-600/20" />
+                <div className="blob animate-float -top-24 -right-24 h-96 w-96 bg-green-600/20" />
 
                 <div className="relative z-10 mx-auto grid w-full max-w-6xl gap-12 px-4 py-24 sm:px-6 md:grid-cols-3">
                     <img
@@ -29,15 +29,15 @@ export default function BookDetail() {
 
                     <div className="md:col-span-2">
                         <nav className="mb-6 flex items-center gap-2 text-sm text-slate-400">
-                            <Link to="/" className="hover:text-orange-400">
+                            <Link to="/" className="hover:text-green-400">
                                 Home
                             </Link>
                             <i className="fas fa-chevron-right text-[10px]"></i>
-                            <Link to="/buku" className="hover:text-orange-400">
+                            <Link to="/buku" className="hover:text-green-400">
                                 Buku
                             </Link>
                         </nav>
-                        <span className="inline-flex rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-orange-300 uppercase backdrop-blur-sm">
+                        <span className="inline-flex rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-green-300 uppercase backdrop-blur-sm">
                             {book.category?.name}
                         </span>
                         <h1 className="text-balance mt-5 text-3xl font-extrabold text-white sm:text-4xl">{book.title}</h1>
@@ -55,7 +55,7 @@ export default function BookDetail() {
                                     href={book.pdf_url}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-orange-600 to-orange-500 px-8 py-3.5 font-semibold text-white shadow-lg shadow-orange-500/30 transition hover:-translate-y-0.5"
+                                    className="inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-green-600 to-green-500 px-8 py-3.5 font-semibold text-white shadow-lg shadow-green-500/30 transition hover:-translate-y-0.5"
                                 >
                                     <i className="fas fa-book-open"></i>
                                     Baca PDF
@@ -121,7 +121,7 @@ export default function BookDetail() {
                                         />
                                     </div>
                                     <div className="p-5">
-                                        <h3 className="line-clamp-2 font-semibold text-slate-900 transition group-hover:text-orange-600">
+                                        <h3 className="line-clamp-2 font-semibold text-slate-900 transition group-hover:text-green-600">
                                             {item.title}
                                         </h3>
                                     </div>

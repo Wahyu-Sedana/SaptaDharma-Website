@@ -66,7 +66,7 @@ export default function LanguageSwitcher({ light = true }) {
                             }}
                             className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm transition ${
                                 locale === code
-                                    ? "bg-orange-500 text-white"
+                                    ? "bg-green-500 text-white"
                                     : light
                                       ? "text-slate-200 hover:bg-white/10"
                                       : "text-slate-700 hover:bg-slate-100"

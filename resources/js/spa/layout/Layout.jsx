@@ -1,21 +1,18 @@
 import { Outlet } from 'react-router-dom';
-import { useFetch } from '../useFetch';
-import { useLocale } from '../LocaleContext';
-import { api } from '../api';
+import { useSettings } from '../SettingsContext';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
 export default function Layout() {
-    const { locale } = useLocale();
-    const { data } = useFetch(() => api.settings(locale), [locale]);
+    const { setting } = useSettings();
 
     return (
         <div className="min-h-screen bg-white">
-            <Navbar siteName={data?.setting?.site_name} logo={data?.setting?.logo} />
+            <Navbar siteName={setting?.site_name} logo={setting?.logo} />
             <main>
                 <Outlet />
             </main>
-            <Footer setting={data?.setting} />
+            <Footer setting={setting} />
         </div>
     );
 }

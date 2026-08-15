@@ -4,10 +4,10 @@ export default function SectionHeading({ eyebrow, title, description, align = 'l
             {eyebrow && (
                 <span
                     className={`inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide uppercase ${
-                        light ? 'bg-white/10 text-orange-300' : 'bg-orange-50 text-orange-600'
+                        light ? 'bg-white/10 text-green-300' : 'bg-green-50 text-green-600'
                     }`}
                 >
-                    <span className="h-1.5 w-1.5 rounded-full bg-orange-500"></span>
+                    <span className="h-1.5 w-1.5 rounded-full bg-green-500"></span>
                     {eyebrow}
                 </span>
             )}

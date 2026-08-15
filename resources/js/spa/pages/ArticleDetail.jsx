@@ -25,15 +25,15 @@ export default function ArticleDetail() {
 
                 <div className="relative z-10 mx-auto w-full max-w-4xl px-4 py-24 sm:px-6">
                     <nav className="mb-6 flex items-center gap-2 text-sm text-slate-400">
-                        <Link to="/" className="hover:text-orange-400">
+                        <Link to="/" className="hover:text-green-400">
                             Home
                         </Link>
                         <i className="fas fa-chevron-right text-[10px]"></i>
-                        <Link to="/artikel" className="hover:text-orange-400">
+                        <Link to="/artikel" className="hover:text-green-400">
                             Artikel
                         </Link>
                     </nav>
-                    <span className="inline-flex rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-orange-300 uppercase backdrop-blur-sm">
+                    <span className="inline-flex rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-green-300 uppercase backdrop-blur-sm">
                         {article.category?.name}
                     </span>
                     <h1 className="text-balance mt-5 text-3xl font-extrabold text-white sm:text-4xl">{article.title}</h1>
@@ -72,7 +72,7 @@ export default function ArticleDetail() {
                                         />
                                     </div>
                                     <div className="p-5">
-                                        <h3 className="line-clamp-2 font-semibold text-slate-900 transition group-hover:text-orange-600">
+                                        <h3 className="line-clamp-2 font-semibold text-slate-900 transition group-hover:text-green-600">
                                             {item.title}
                                         </h3>
                                     </div>

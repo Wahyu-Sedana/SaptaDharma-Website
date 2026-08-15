@@ -38,7 +38,7 @@ export default function Teachings() {
                                     key={value.id}
                                     className="group rounded-3xl bg-white p-6 text-center shadow-sm ring-1 ring-slate-900/5 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
                                 >
-                                    <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-amber-400 text-white shadow-lg shadow-orange-500/20 transition group-hover:scale-110">
+                                    <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500 to-emerald-400 text-white shadow-lg shadow-green-500/20 transition group-hover:scale-110">
                                         <i className={`${value.icon} text-2xl`}></i>
                                     </div>
                                     <h3 className="font-semibold text-slate-900">{value.title}</h3>
@@ -64,11 +64,11 @@ export default function Teachings() {
                                         onClick={() => setActiveIndex(index)}
                                         className={`block w-full rounded-2xl px-5 py-4 text-left text-sm font-medium transition ${
                                             index === activeIndex
-                                                ? 'bg-orange-500 text-white shadow-lg shadow-orange-500/25'
-                                                : 'bg-white text-slate-700 shadow-sm ring-1 ring-slate-900/5 hover:bg-orange-50'
+                                                ? 'bg-green-500 text-white shadow-lg shadow-green-500/25'
+                                                : 'bg-white text-slate-700 shadow-sm ring-1 ring-slate-900/5 hover:bg-green-50'
                                         }`}
                                     >
-                                        <span className={index === activeIndex ? 'text-orange-100' : 'text-orange-500'}>
+                                        <span className={index === activeIndex ? 'text-green-100' : 'text-green-500'}>
                                             {String(index + 1).padStart(2, '0')}
                                         </span>{' '}
                                         {ajaran.title}
@@ -87,7 +87,7 @@ export default function Teachings() {
                                         <h3 className="text-xl font-bold text-slate-900">{activeItem.title}</h3>
                                         <p className="mt-4 leading-relaxed text-slate-600">{activeItem.description}</p>
                                         {activeItem.quote && (
-                                            <blockquote className="mt-6 rounded-2xl bg-orange-50 p-5 text-sm text-orange-800 italic">
+                                            <blockquote className="mt-6 rounded-2xl bg-green-50 p-5 text-sm text-green-800 italic">
                                                 &ldquo;{activeItem.quote}&rdquo;
                                             </blockquote>
                                         )}

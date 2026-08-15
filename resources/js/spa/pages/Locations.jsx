@@ -51,7 +51,7 @@ export default function Locations() {
                                         <p className="text-sm text-slate-500">{location.address}</p>
                                         {location.phone && (
                                             <p className="mt-2 flex items-center gap-2 text-sm text-slate-500">
-                                                <i className="fas fa-phone text-orange-500"></i>
+                                                <i className="fas fa-phone text-green-500"></i>
                                                 {location.phone}
                                             </p>
                                         )}
@@ -60,7 +60,7 @@ export default function Locations() {
                                                 href={location.maps_link}
                                                 target="_blank"
                                                 rel="noreferrer"
-                                                className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-orange-600 hover:text-orange-700"
+                                                className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-green-600 hover:text-green-700"
                                             >
                                                 <i className="fas fa-map-marker-alt"></i>
                                                 Lihat Peta

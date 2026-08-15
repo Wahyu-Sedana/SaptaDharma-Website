@@ -13,7 +13,7 @@ export default function Footer({ setting }) {
 
     return (
         <footer className="relative overflow-hidden bg-slate-950 text-slate-400">
-            <div className="blob -top-32 left-1/3 h-72 w-72 bg-orange-600/10" />
+            <div className="blob -top-32 left-1/3 h-72 w-72 bg-green-600/10" />
 
             <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
                 <div className="grid gap-12 md:grid-cols-3">
@@ -26,7 +26,7 @@ export default function Footer({ setting }) {
                                     className="h-9 w-auto object-contain"
                                 />
                             ) : (
-                                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-amber-400 text-sm shadow-lg shadow-orange-500/30">
+                                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-green-500 to-emerald-400 text-sm shadow-lg shadow-green-500/30">
                                     SD
                                 </span>
                             )}
@@ -43,7 +43,7 @@ export default function Footer({ setting }) {
                                         href={setting.facebook}
                                         target="_blank"
                                         rel="noreferrer"
-                                        className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 transition hover:bg-orange-500 hover:text-white"
+                                        className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 transition hover:bg-green-500 hover:text-white"
                                     >
                                         <i className="fab fa-facebook-f"></i>
                                     </a>
@@ -53,7 +53,7 @@ export default function Footer({ setting }) {
                                         href={setting.instagram}
                                         target="_blank"
                                         rel="noreferrer"
-                                        className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 transition hover:bg-orange-500 hover:text-white"
+                                        className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 transition hover:bg-green-500 hover:text-white"
                                     >
                                         <i className="fab fa-instagram"></i>
                                     </a>
@@ -63,7 +63,7 @@ export default function Footer({ setting }) {
                                         href={setting.youtube}
                                         target="_blank"
                                         rel="noreferrer"
-                                        className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 transition hover:bg-orange-500 hover:text-white"
+                                        className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 transition hover:bg-green-500 hover:text-white"
                                     >
                                         <i className="fab fa-youtube"></i>
                                     </a>
@@ -77,7 +77,7 @@ export default function Footer({ setting }) {
                         <ul className="mt-4 space-y-3 text-sm">
                             {LINKS.map((link) => (
                                 <li key={link.to}>
-                                    <Link to={link.to} className="transition hover:text-orange-400">
+                                    <Link to={link.to} className="transition hover:text-green-400">
                                         {link.label}
                                     </Link>
                                 </li>
@@ -90,19 +90,19 @@ export default function Footer({ setting }) {
                         <ul className="mt-4 space-y-3 text-sm">
                             {setting?.address && (
                                 <li className="flex gap-3">
-                                    <i className="fas fa-location-dot mt-1 text-orange-400"></i>
+                                    <i className="fas fa-location-dot mt-1 text-green-400"></i>
                                     <span>{setting.address}</span>
                                 </li>
                             )}
                             {setting?.phone && (
                                 <li className="flex gap-3">
-                                    <i className="fas fa-phone mt-1 text-orange-400"></i>
+                                    <i className="fas fa-phone mt-1 text-green-400"></i>
                                     <span>{setting.phone}</span>
                                 </li>
                             )}
                             {setting?.email && (
                                 <li className="flex gap-3">
-                                    <i className="fas fa-envelope mt-1 text-orange-400"></i>
+                                    <i className="fas fa-envelope mt-1 text-green-400"></i>
                                     <span>{setting.email}</span>
                                 </li>
                             )}

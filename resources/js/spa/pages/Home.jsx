@@ -24,7 +24,7 @@ export default function Home() {
                     <div className="flex flex-col gap-3 sm:flex-row">
                         <a
                             href="#about"
-                            className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-orange-600 to-orange-500 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-orange-500/30 transition hover:-translate-y-0.5 hover:shadow-orange-500/50 md:px-8 md:text-base"
+                            className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-green-600 to-green-500 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-green-500/30 transition hover:-translate-y-0.5 hover:shadow-green-500/50 md:px-8 md:text-base"
                         >
                             Pelajari Lebih Lanjut
                             <i className="fas fa-arrow-right text-xs transition group-hover:translate-x-1"></i>
@@ -43,7 +43,7 @@ export default function Home() {
                 <section id="about" className="relative overflow-hidden py-24">
                     <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
                         <div className="relative">
-                            <div className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-gradient-to-br from-orange-100 via-amber-50 to-transparent" />
+                            <div className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-gradient-to-br from-green-100 via-emerald-50 to-transparent" />
                             {sections.about.image && (
                                 <img
                                     src={sections.about.image}
@@ -80,7 +80,7 @@ export default function Home() {
                             <SectionHeading eyebrow={sections.latest_articles.subtitle} title={sections.latest_articles.title} />
                             <Link
                                 to="/artikel"
-                                className="group inline-flex items-center gap-2 text-sm font-semibold text-orange-600 hover:text-orange-700"
+                                className="group inline-flex items-center gap-2 text-sm font-semibold text-green-600 hover:text-green-700"
                             >
                                 {sections.latest_articles.button_text ?? 'Lihat Semua'}
                                 <i className="fas fa-arrow-right text-xs transition group-hover:translate-x-1"></i>
@@ -104,10 +104,10 @@ export default function Home() {
                                             />
                                         </div>
                                         <div className="p-6">
-                                            <span className="inline-flex rounded-full bg-orange-50 px-3 py-1 text-xs font-semibold text-orange-600 uppercase">
+                                            <span className="inline-flex rounded-full bg-green-50 px-3 py-1 text-xs font-semibold text-green-600 uppercase">
                                                 {article.category?.name}
                                             </span>
-                                            <h3 className="mt-3 line-clamp-2 font-semibold text-slate-900 transition group-hover:text-orange-600">
+                                            <h3 className="mt-3 line-clamp-2 font-semibold text-slate-900 transition group-hover:text-green-600">
                                                 {article.title}
                                             </h3>
                                         </div>
@@ -125,7 +125,7 @@ export default function Home() {
                             <SectionHeading eyebrow={sections.latest_books.subtitle} title={sections.latest_books.title} />
                             <Link
                                 to="/buku"
-                                className="group inline-flex items-center gap-2 text-sm font-semibold text-orange-600 hover:text-orange-700"
+                                className="group inline-flex items-center gap-2 text-sm font-semibold text-green-600 hover:text-green-700"
                             >
                                 {sections.latest_books.button_text ?? 'Lihat Semua'}
                                 <i className="fas fa-arrow-right text-xs transition group-hover:translate-x-1"></i>
@@ -147,7 +147,7 @@ export default function Home() {
                                         />
                                     </div>
                                     <div className="p-5">
-                                        <h3 className="line-clamp-2 font-semibold text-slate-900 transition group-hover:text-orange-600">
+                                        <h3 className="line-clamp-2 font-semibold text-slate-900 transition group-hover:text-green-600">
                                             {book.title}
                                         </h3>
                                         <p className="mt-1 text-sm text-slate-500">{book.author}</p>
@@ -166,7 +166,7 @@ export default function Home() {
                             <SectionHeading eyebrow={sections.locations.subtitle} title={sections.locations.title} />
                             <Link
                                 to="/lokasi"
-                                className="group inline-flex items-center gap-2 text-sm font-semibold text-orange-600 hover:text-orange-700"
+                                className="group inline-flex items-center gap-2 text-sm font-semibold text-green-600 hover:text-green-700"
                             >
                                 {sections.locations.button_text ?? 'Lihat Semua'}
                                 <i className="fas fa-arrow-right text-xs transition group-hover:translate-x-1"></i>
