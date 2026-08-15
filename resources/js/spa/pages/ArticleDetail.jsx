@@ -49,20 +49,20 @@ export default function ArticleDetail() {
 
             <section className="py-20">
                 <div className="mx-auto max-w-3xl px-4 sm:px-6">
-                    <div className="prose prose-slate prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: article.content }} />
+                    <div className="prose prose-slate dark:prose-invert prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: article.content }} />
                 </div>
             </section>
 
             {related_articles?.length > 0 && (
-                <section className="bg-slate-50 py-20">
+                <section className="bg-slate-50 dark:bg-slate-900/50 py-20">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                        <h2 className="mb-10 text-2xl font-bold text-slate-900">Artikel Terkait</h2>
+                        <h2 className="mb-10 text-2xl font-bold text-slate-900 dark:text-white">Artikel Terkait</h2>
                         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                             {related_articles.map((item) => (
                                 <Link
                                     key={item.id}
                                     to={`/artikel/${item.slug}`}
-                                    className="group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-slate-900/5 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+                                    className="group overflow-hidden rounded-3xl bg-white dark:bg-slate-900 shadow-sm ring-1 ring-slate-900/5 dark:ring-white/10 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
                                 >
                                     <div className="overflow-hidden">
                                         <img
@@ -72,7 +72,7 @@ export default function ArticleDetail() {
                                         />
                                     </div>
                                     <div className="p-5">
-                                        <h3 className="line-clamp-2 font-semibold text-slate-900 transition group-hover:text-green-600">
+                                        <h3 className="line-clamp-2 font-semibold text-slate-900 dark:text-white transition group-hover:text-green-600">
                                             {item.title}
                                         </h3>
                                     </div>

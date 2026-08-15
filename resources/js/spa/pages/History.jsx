@@ -24,7 +24,7 @@ export default function History() {
                     <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
                         <SectionHeading title={sections.about.title} align="center" />
                         <div
-                            className="prose prose-slate mx-auto mt-6 max-w-none text-center leading-relaxed text-slate-600"
+                            className="prose prose-slate dark:prose-invert mx-auto mt-6 max-w-none text-center leading-relaxed text-slate-600 dark:text-slate-400"
                             dangerouslySetInnerHTML={{ __html: sections.about.description }}
                         />
                     </div>
@@ -32,7 +32,7 @@ export default function History() {
             )}
 
             {sections?.timeline && timelines?.length > 0 && (
-                <section className="bg-slate-50 py-24">
+                <section className="bg-slate-50 dark:bg-slate-900/50 py-24">
                     <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
                         <SectionHeading title={sections.timeline.title} align="center" />
 
@@ -42,11 +42,11 @@ export default function History() {
                                     <div className="absolute top-1 -left-[3.15rem] flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-green-500 to-emerald-400 text-white shadow-lg shadow-green-500/25">
                                         <i className={`${item.icon} text-xs`}></i>
                                     </div>
-                                    <span className="inline-flex rounded-full bg-green-50 px-3 py-1 text-xs font-semibold text-green-600">
+                                    <span className="inline-flex rounded-full bg-green-50 dark:bg-green-500/10 px-3 py-1 text-xs font-semibold text-green-600">
                                         {item.year}
                                     </span>
-                                    <h3 className="mt-3 font-semibold text-slate-900">{item.title}</h3>
-                                    <p className="mt-1 text-sm leading-relaxed text-slate-600">{item.description}</p>
+                                    <h3 className="mt-3 font-semibold text-slate-900 dark:text-white">{item.title}</h3>
+                                    <p className="mt-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{item.description}</p>
                                 </div>
                             ))}
                         </div>
@@ -69,9 +69,9 @@ export default function History() {
                                             className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
                                         />
                                     </div>
-                                    <h3 className="font-semibold text-slate-900">{founder.name}</h3>
+                                    <h3 className="font-semibold text-slate-900 dark:text-white">{founder.name}</h3>
                                     <p className="text-sm font-medium text-green-600">{founder.position}</p>
-                                    <p className="mt-2 text-sm text-slate-500">{founder.description}</p>
+                                    <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">{founder.description}</p>
                                 </div>
                             ))}
                         </div>

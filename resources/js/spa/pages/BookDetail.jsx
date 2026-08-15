@@ -78,40 +78,40 @@ export default function BookDetail() {
 
             <section className="py-20">
                 <div className="mx-auto max-w-3xl px-4 sm:px-6">
-                    <h2 className="mb-6 text-2xl font-bold text-slate-900">Tentang Buku</h2>
-                    <div className="prose prose-slate prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: book.description }} />
+                    <h2 className="mb-6 text-2xl font-bold text-slate-900 dark:text-white">Tentang Buku</h2>
+                    <div className="prose prose-slate dark:prose-invert prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: book.description }} />
 
-                    <dl className="mt-12 grid grid-cols-2 gap-6 rounded-3xl bg-slate-50 p-8 text-sm sm:grid-cols-4">
+                    <dl className="mt-12 grid grid-cols-2 gap-6 rounded-3xl bg-slate-50 dark:bg-slate-900/50 p-8 text-sm sm:grid-cols-4">
                         <div>
-                            <dt className="text-slate-500">ISBN</dt>
-                            <dd className="mt-1 font-semibold text-slate-900">{book.isbn}</dd>
+                            <dt className="text-slate-500 dark:text-slate-400">ISBN</dt>
+                            <dd className="mt-1 font-semibold text-slate-900 dark:text-white">{book.isbn}</dd>
                         </div>
                         <div>
-                            <dt className="text-slate-500">Dibaca</dt>
-                            <dd className="mt-1 font-semibold text-slate-900">{book.views}x</dd>
+                            <dt className="text-slate-500 dark:text-slate-400">Dibaca</dt>
+                            <dd className="mt-1 font-semibold text-slate-900 dark:text-white">{book.views}x</dd>
                         </div>
                         <div>
-                            <dt className="text-slate-500">Diunduh</dt>
-                            <dd className="mt-1 font-semibold text-slate-900">{book.downloads}x</dd>
+                            <dt className="text-slate-500 dark:text-slate-400">Diunduh</dt>
+                            <dd className="mt-1 font-semibold text-slate-900 dark:text-white">{book.downloads}x</dd>
                         </div>
                         <div>
-                            <dt className="text-slate-500">Estimasi Baca</dt>
-                            <dd className="mt-1 font-semibold text-slate-900">{book.reading_time} menit</dd>
+                            <dt className="text-slate-500 dark:text-slate-400">Estimasi Baca</dt>
+                            <dd className="mt-1 font-semibold text-slate-900 dark:text-white">{book.reading_time} menit</dd>
                         </div>
                     </dl>
                 </div>
             </section>
 
             {related_books?.length > 0 && (
-                <section className="bg-slate-50 py-20">
+                <section className="bg-slate-50 dark:bg-slate-900/50 py-20">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                        <h2 className="mb-10 text-2xl font-bold text-slate-900">Buku Terkait</h2>
+                        <h2 className="mb-10 text-2xl font-bold text-slate-900 dark:text-white">Buku Terkait</h2>
                         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                             {related_books.map((item) => (
                                 <Link
                                     key={item.id}
                                     to={`/buku/${item.slug}`}
-                                    className="group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-slate-900/5 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+                                    className="group overflow-hidden rounded-3xl bg-white dark:bg-slate-900 shadow-sm ring-1 ring-slate-900/5 dark:ring-white/10 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
                                 >
                                     <div className="overflow-hidden">
                                         <img
@@ -121,7 +121,7 @@ export default function BookDetail() {
                                         />
                                     </div>
                                     <div className="p-5">
-                                        <h3 className="line-clamp-2 font-semibold text-slate-900 transition group-hover:text-green-600">
+                                        <h3 className="line-clamp-2 font-semibold text-slate-900 dark:text-white transition group-hover:text-green-600">
                                             {item.title}
                                         </h3>
                                     </div>

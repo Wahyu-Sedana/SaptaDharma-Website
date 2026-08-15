@@ -28,7 +28,7 @@ export default function Locations() {
                             {locations?.map((location) => (
                                 <div
                                     key={location.id}
-                                    className="group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-slate-900/5 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+                                    className="group overflow-hidden rounded-3xl bg-white dark:bg-slate-900 shadow-sm ring-1 ring-slate-900/5 dark:ring-white/10 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
                                 >
                                     <div className="overflow-hidden">
                                         <img
@@ -39,18 +39,18 @@ export default function Locations() {
                                     </div>
                                     <div className="p-6">
                                         <div className="mb-2 flex items-center justify-between gap-3">
-                                            <h3 className="font-semibold text-slate-900">{location.name}</h3>
+                                            <h3 className="font-semibold text-slate-900 dark:text-white">{location.name}</h3>
                                             <span
                                                 className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium ${
-                                                    location.is_open ? 'bg-green-100 text-green-700' : 'bg-slate-100 text-slate-500'
+                                                    location.is_open ? 'bg-green-100 text-green-700 dark:bg-green-500/10 dark:text-green-400' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
                                                 }`}
                                             >
                                                 {location.is_open ? 'Buka' : 'Tutup'}
                                             </span>
                                         </div>
-                                        <p className="text-sm text-slate-500">{location.address}</p>
+                                        <p className="text-sm text-slate-500 dark:text-slate-400">{location.address}</p>
                                         {location.phone && (
-                                            <p className="mt-2 flex items-center gap-2 text-sm text-slate-500">
+                                            <p className="mt-2 flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
                                                 <i className="fas fa-phone text-green-500"></i>
                                                 {location.phone}
                                             </p>
@@ -75,7 +75,7 @@ export default function Locations() {
             )}
 
             {sections?.gallery && galleries?.length > 0 && (
-                <section className="bg-slate-50 py-24">
+                <section className="bg-slate-50 dark:bg-slate-900/50 py-24">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <SectionHeading title={sections.gallery.title} />
 

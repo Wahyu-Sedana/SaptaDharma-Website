@@ -56,7 +56,7 @@ export default function Home() {
                         <div>
                             <SectionHeading eyebrow={sections.about.subtitle} title={sections.about.title} />
                             <div
-                                className="prose prose-slate mt-6 max-w-none leading-relaxed text-slate-600"
+                                className="prose prose-slate dark:prose-invert mt-6 max-w-none leading-relaxed text-slate-600 dark:text-slate-400"
                                 dangerouslySetInnerHTML={{ __html: sections.about.description }}
                             />
                             {sections.about.button_text && (
@@ -74,7 +74,7 @@ export default function Home() {
             )}
 
             {sections?.latest_articles && (
-                <section className="bg-slate-50 py-24">
+                <section className="bg-slate-50 dark:bg-slate-900/50 py-24">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
                             <SectionHeading eyebrow={sections.latest_articles.subtitle} title={sections.latest_articles.title} />
@@ -94,7 +94,7 @@ export default function Home() {
                                     <Link
                                         key={article.id}
                                         to={`/artikel/${article.slug}`}
-                                        className="group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-slate-900/5 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+                                        className="group overflow-hidden rounded-3xl bg-white dark:bg-slate-900 shadow-sm ring-1 ring-slate-900/5 dark:ring-white/10 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
                                     >
                                         <div className="overflow-hidden">
                                             <img
@@ -104,10 +104,10 @@ export default function Home() {
                                             />
                                         </div>
                                         <div className="p-6">
-                                            <span className="inline-flex rounded-full bg-green-50 px-3 py-1 text-xs font-semibold text-green-600 uppercase">
+                                            <span className="inline-flex rounded-full bg-green-50 dark:bg-green-500/10 px-3 py-1 text-xs font-semibold text-green-600 uppercase">
                                                 {article.category?.name}
                                             </span>
-                                            <h3 className="mt-3 line-clamp-2 font-semibold text-slate-900 transition group-hover:text-green-600">
+                                            <h3 className="mt-3 line-clamp-2 font-semibold text-slate-900 dark:text-white transition group-hover:text-green-600">
                                                 {article.title}
                                             </h3>
                                         </div>
@@ -137,7 +137,7 @@ export default function Home() {
                                 <Link
                                     key={book.id}
                                     to={`/buku/${book.slug}`}
-                                    className="group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-slate-900/5 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+                                    className="group overflow-hidden rounded-3xl bg-white dark:bg-slate-900 shadow-sm ring-1 ring-slate-900/5 dark:ring-white/10 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
                                 >
                                     <div className="overflow-hidden">
                                         <img
@@ -147,10 +147,10 @@ export default function Home() {
                                         />
                                     </div>
                                     <div className="p-5">
-                                        <h3 className="line-clamp-2 font-semibold text-slate-900 transition group-hover:text-green-600">
+                                        <h3 className="line-clamp-2 font-semibold text-slate-900 dark:text-white transition group-hover:text-green-600">
                                             {book.title}
                                         </h3>
-                                        <p className="mt-1 text-sm text-slate-500">{book.author}</p>
+                                        <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">{book.author}</p>
                                     </div>
                                 </Link>
                             ))}
@@ -160,7 +160,7 @@ export default function Home() {
             )}
 
             {sections?.locations && locations?.length > 0 && (
-                <section className="bg-slate-50 py-24">
+                <section className="bg-slate-50 dark:bg-slate-900/50 py-24">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
                             <SectionHeading eyebrow={sections.locations.subtitle} title={sections.locations.title} />
@@ -177,7 +177,7 @@ export default function Home() {
                             {locations.map((location) => (
                                 <div
                                     key={location.id}
-                                    className="group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-slate-900/5 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+                                    className="group overflow-hidden rounded-3xl bg-white dark:bg-slate-900 shadow-sm ring-1 ring-slate-900/5 dark:ring-white/10 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
                                 >
                                     <div className="overflow-hidden">
                                         <img
@@ -187,8 +187,8 @@ export default function Home() {
                                         />
                                     </div>
                                     <div className="p-6">
-                                        <h3 className="font-semibold text-slate-900">{location.name}</h3>
-                                        <p className="mt-1 text-sm text-slate-500">{location.address}</p>
+                                        <h3 className="font-semibold text-slate-900 dark:text-white">{location.name}</h3>
+                                        <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">{location.address}</p>
                                     </div>
                                 </div>
                             ))}

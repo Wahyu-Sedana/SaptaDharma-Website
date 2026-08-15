@@ -36,13 +36,13 @@ export default function Teachings() {
                             {luhur_values?.map((value) => (
                                 <div
                                     key={value.id}
-                                    className="group rounded-3xl bg-white p-6 text-center shadow-sm ring-1 ring-slate-900/5 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+                                    className="group rounded-3xl bg-white dark:bg-slate-900 p-6 text-center shadow-sm ring-1 ring-slate-900/5 dark:ring-white/10 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
                                 >
                                     <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500 to-emerald-400 text-white shadow-lg shadow-green-500/20 transition group-hover:scale-110">
                                         <i className={`${value.icon} text-2xl`}></i>
                                     </div>
-                                    <h3 className="font-semibold text-slate-900">{value.title}</h3>
-                                    <p className="mt-2 text-sm leading-relaxed text-slate-500">{value.description}</p>
+                                    <h3 className="font-semibold text-slate-900 dark:text-white">{value.title}</h3>
+                                    <p className="mt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400">{value.description}</p>
                                 </div>
                             ))}
                         </div>
@@ -51,7 +51,7 @@ export default function Teachings() {
             )}
 
             {sections?.pokok_ajaran && pokok_ajarans?.length > 0 && (
-                <section className="bg-slate-50 py-24">
+                <section className="bg-slate-50 dark:bg-slate-900/50 py-24">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <SectionHeading eyebrow={sections.pokok_ajaran.subtitle} title={sections.pokok_ajaran.title} />
 
@@ -65,7 +65,7 @@ export default function Teachings() {
                                         className={`block w-full rounded-2xl px-5 py-4 text-left text-sm font-medium transition ${
                                             index === activeIndex
                                                 ? 'bg-green-500 text-white shadow-lg shadow-green-500/25'
-                                                : 'bg-white text-slate-700 shadow-sm ring-1 ring-slate-900/5 hover:bg-green-50'
+                                                : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 shadow-sm ring-1 ring-slate-900/5 dark:ring-white/10 hover:bg-green-50 dark:hover:bg-green-500/10'
                                         }`}
                                     >
                                         <span className={index === activeIndex ? 'text-green-100' : 'text-green-500'}>
@@ -76,7 +76,7 @@ export default function Teachings() {
                                 ))}
                             </div>
 
-                            <div className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-slate-900/5 lg:col-span-2">
+                            <div className="rounded-3xl bg-white dark:bg-slate-900 p-8 shadow-sm ring-1 ring-slate-900/5 dark:ring-white/10 lg:col-span-2">
                                 {activeItem && (
                                     <>
                                         <img
@@ -84,10 +84,10 @@ export default function Teachings() {
                                             alt={activeItem.title}
                                             className="mb-6 h-56 w-full rounded-2xl object-cover"
                                         />
-                                        <h3 className="text-xl font-bold text-slate-900">{activeItem.title}</h3>
-                                        <p className="mt-4 leading-relaxed text-slate-600">{activeItem.description}</p>
+                                        <h3 className="text-xl font-bold text-slate-900 dark:text-white">{activeItem.title}</h3>
+                                        <p className="mt-4 leading-relaxed text-slate-600 dark:text-slate-400">{activeItem.description}</p>
                                         {activeItem.quote && (
-                                            <blockquote className="mt-6 rounded-2xl bg-green-50 p-5 text-sm text-green-800 italic">
+                                            <blockquote className="mt-6 rounded-2xl bg-green-50 dark:bg-green-500/10 p-5 text-sm text-green-800 dark:text-green-300 italic">
                                                 &ldquo;{activeItem.quote}&rdquo;
                                             </blockquote>
                                         )}

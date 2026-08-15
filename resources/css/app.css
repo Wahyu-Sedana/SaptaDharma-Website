@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source "../**/*.blade.php";
@@ -76,6 +78,10 @@ body {
     background-color: theme(--color-slate-100);
 }
 
+.dark .skeleton {
+    background-color: theme(--color-slate-800);
+}
+
 .skeleton::after {
     content: "";
     position: absolute;
@@ -83,6 +89,18 @@ body {
     transform: translateX(-100%);
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
     animation: shimmer 1.6s infinite;
+}
+
+.dark .skeleton::after {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+}
+
+html {
+    color-scheme: light;
+}
+
+html.dark {
+    color-scheme: dark;
 }
 
 .text-balance {

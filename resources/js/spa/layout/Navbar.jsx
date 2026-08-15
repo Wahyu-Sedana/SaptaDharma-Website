@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { useLocale } from '../LocaleContext';
 import { t } from '../strings';
 import LanguageSwitcher from '../components/LanguageSwitcher';
+import ThemeToggle from '../components/ThemeToggle';
 
 export default function Navbar({ siteName, logo }) {
     const [open, setOpen] = useState(false);
@@ -63,6 +64,7 @@ export default function Navbar({ siteName, logo }) {
                         ))}
                     </div>
 
+                    <ThemeToggle />
                     <LanguageSwitcher />
                 </div>
 
@@ -93,7 +95,8 @@ export default function Navbar({ siteName, logo }) {
                             {link.label}
                         </NavLink>
                     ))}
-                    <div className="mt-3 px-4">
+                    <div className="mt-3 flex items-center gap-2 px-4">
+                        <ThemeToggle />
                         <LanguageSwitcher />
                     </div>
                 </div>

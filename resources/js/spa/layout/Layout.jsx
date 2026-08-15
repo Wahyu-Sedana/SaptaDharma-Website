@@ -7,7 +7,7 @@ export default function Layout() {
     const { setting } = useSettings();
 
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-white transition-colors dark:bg-slate-950">
             <Navbar siteName={setting?.site_name} logo={setting?.logo} />
             <main>
                 <Outlet />
