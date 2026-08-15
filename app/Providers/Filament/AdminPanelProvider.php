@@ -29,7 +29,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('superadmin')
             ->brandName('Sapta Darma')
-            ->darkMode(false)
+            ->darkMode(true)
             ->brandLogo(function () {
                 $setting = WebSetting::first();
                 $logo = $setting?->logo ? asset('storage/' . $setting->logo) : null;
@@ -65,6 +65,12 @@ class AdminPanelProvider extends PanelProvider
                             color: #ffffff !important;
                         }
                         .fi-sidebar .fi-brand-subtitle {
+                            color: rgba(255, 255, 255, 0.75) !important;
+                        }
+                        .dark .fi-brand-title {
+                            color: #ffffff !important;
+                        }
+                        .dark .fi-brand-subtitle {
                             color: rgba(255, 255, 255, 0.75) !important;
                         }
                         .fi-sidebar {
