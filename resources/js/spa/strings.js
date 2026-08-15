@@ -5,7 +5,7 @@ const STRINGS = {
         history: 'Sejarah',
         articles: 'Artikel',
         books: 'Buku',
-        locations: 'Lokasi',
+        locations: 'Sanggar',
     },
     en: {
         home: 'Home',
@@ -13,7 +13,7 @@ const STRINGS = {
         history: 'History',
         articles: 'Articles',
         books: 'Books',
-        locations: 'Locations',
+        locations: 'Sanggar',
     },
 };
 
