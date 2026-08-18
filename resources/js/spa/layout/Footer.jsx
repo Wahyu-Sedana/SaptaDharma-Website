@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 const LINKS = [
-    { to: '/ajaran', label: 'Ajaran' },
+    { to: '/ajaran', label: 'Wewarah' },
     { to: '/sejarah', label: 'Sejarah' },
     { to: '/artikel', label: 'Artikel' },
     { to: '/buku', label: 'Buku' },

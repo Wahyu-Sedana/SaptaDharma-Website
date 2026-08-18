@@ -21,7 +21,7 @@ export default function Teachings() {
 
     return (
         <div>
-            <Hero hero={hero} breadcrumb="Ajaran" compact />
+            <Hero hero={hero} breadcrumb="Wewarah" compact />
 
             {sections?.values && (
                 <section className="py-24">

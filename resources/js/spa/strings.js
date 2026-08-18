@@ -1,7 +1,7 @@
 const STRINGS = {
     id: {
         home: 'Beranda',
-        teachings: 'Ajaran',
+        teachings: 'Wewarah',
         history: 'Sejarah',
         articles: 'Artikel',
         books: 'Buku',
