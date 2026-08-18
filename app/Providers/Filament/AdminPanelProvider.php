@@ -37,7 +37,7 @@ class AdminPanelProvider extends PanelProvider
 
                 return new HtmlString('
                     <div class="flex items-center gap-3">
-                        ' . ($logo ? '<img src="' . e($logo) . '" style="height:40px;" alt="' . e($siteName) . '">' : '') . '
+                        ' . ($logo ? '<img src="' . e($logo) . '" style="height:56px;" alt="' . e($siteName) . '">' : '') . '
 
                         <div class="leading-tight">
                             <div class="fi-brand-title" style="font-size: 1.125rem; font-weight: 700;">

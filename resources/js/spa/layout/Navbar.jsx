@@ -37,7 +37,7 @@ export default function Navbar({ siteName, logo }) {
             <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
                 <Link to="/" className="flex items-center gap-2 text-lg font-bold text-white">
                     {logo ? (
-                        <img src={logo} alt={siteName ?? 'Sapta Darma'} className="h-9 w-auto object-contain" />
+                        <img src={logo} alt={siteName ?? 'Sapta Darma'} className="h-12 w-auto object-contain" />
                     ) : (
                         <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-green-500 to-emerald-400 text-sm shadow-lg shadow-green-500/30">
                             SD

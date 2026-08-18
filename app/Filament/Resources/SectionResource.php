@@ -44,9 +44,9 @@ class SectionResource extends Resource
                                 ->required()
                                 ->maxLength(255)
                                 ->live(onBlur: true)
-                                ->afterStateUpdated(function (string $state, callable $set) use ($name) {
+                                ->afterStateUpdated(function (?string $state, callable $set) use ($name) {
                                     if (str_ends_with($name, '.id')) {
-                                        $set('slug', Str::slug($state));
+                                        $set('slug', Str::slug((string) $state));
                                     }
                                 }),
                             'subtitle' => fn (string $name) => Forms\Components\Textarea::make($name)
