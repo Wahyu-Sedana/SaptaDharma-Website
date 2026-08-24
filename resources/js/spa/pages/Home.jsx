@@ -133,7 +133,12 @@ export default function Home() {
                         </div>
 
                         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                            {(featured_book ? [featured_book, ...latest_books] : latest_books).slice(0, 4).map((book) => (
+                            {(featured_book
+                                ? [featured_book, ...latest_books.filter((book) => book.id !== featured_book.id)]
+                                : latest_books
+                            )
+                                .slice(0, 4)
+                                .map((book) => (
                                 <Link
                                     key={book.id}
                                     to={`/buku/${book.slug}`}
