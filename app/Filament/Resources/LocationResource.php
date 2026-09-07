@@ -3,6 +3,9 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\LocationResource\Pages;
+use App\Filament\Resources\LocationResource\RelationManagers\ActivitiesRelationManager;
+use App\Filament\Resources\LocationResource\RelationManagers\HoursRelationManager;
+use App\Filament\Resources\LocationResource\RelationManagers\PhotosRelationManager;
 use App\Filament\Support\TranslatableTabs;
 use App\Models\Location;
 use Filament\Forms;
@@ -10,6 +13,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
 
 class LocationResource extends Resource
 {
@@ -26,7 +30,7 @@ class LocationResource extends Resource
                 Forms\Components\Section::make('Informasi Utama')
                     ->schema([
                         Forms\Components\FileUpload::make('image')
-                            ->label('Gambar')
+                            ->label('Gambar Sampul')
                             ->image()
                             ->directory('locations')
                             ->columnSpanFull(),
@@ -34,16 +38,49 @@ class LocationResource extends Resource
                             'name' => fn (string $name) => Forms\Components\TextInput::make($name)
                                 ->label('Nama')
                                 ->required()
-                                ->maxLength(255),
+                                ->maxLength(255)
+                                ->live(onBlur: true)
+                                ->afterStateUpdated(function (?string $state, callable $set) use ($name) {
+                                    if (str_ends_with($name, '.id')) {
+                                        $set('slug', Str::slug((string) $state));
+                                    }
+                                }),
                             'address' => fn (string $name) => Forms\Components\Textarea::make($name)
                                 ->label('Alamat')
                                 ->required(),
                         ]),
+                        Forms\Components\TextInput::make('slug')
+                            ->required()
+                            ->maxLength(255)
+                            ->unique(ignoreRecord: true),
                         Forms\Components\TextInput::make('phone')
                             ->label('Telepon')
                             ->tel()
                             ->maxLength(255),
                     ]),
+
+                Forms\Components\Section::make('Video Sanggar')
+                    ->description('Video profil atau kegiatan sanggar (opsional).')
+                    ->schema([
+                        Forms\Components\FileUpload::make('video')
+                            ->label('Video')
+                            ->directory('locations/videos')
+                            ->maxSize(51200)
+                            ->acceptedFileTypes(['video/mp4', 'video/webm', 'video/ogg']),
+                    ]),
+
+                Forms\Components\Section::make('Tuntunan')
+                    ->description('Nama dan foto tuntunan yang membina sanggar ini.')
+                    ->schema([
+                        Forms\Components\FileUpload::make('tuntunan_photo')
+                            ->label('Foto Tuntunan')
+                            ->image()
+                            ->directory('locations/tuntunan'),
+                        Forms\Components\TextInput::make('tuntunan_name')
+                            ->label('Nama Tuntunan')
+                            ->maxLength(255),
+                    ])
+                    ->columns(2),
 
                 Forms\Components\Section::make('Lokasi Peta')
                     ->schema([
@@ -54,15 +91,6 @@ class LocationResource extends Resource
                         Forms\Components\Textarea::make('maps_link')
                             ->label('Tautan Google Maps')
                             ->columnSpanFull(),
-                    ])
-                    ->columns(2),
-
-                Forms\Components\Section::make('Jam Operasional')
-                    ->schema([
-                        Forms\Components\TimePicker::make('open_time')
-                            ->label('Buka'),
-                        Forms\Components\TimePicker::make('close_time')
-                            ->label('Tutup'),
                     ])
                     ->columns(2),
 
@@ -94,12 +122,10 @@ class LocationResource extends Resource
                     ->defaultImageUrl(asset('images/no-image.png')),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('tuntunan_name')
+                    ->label('Tuntunan'),
                 Tables\Columns\TextColumn::make('phone')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('open_time')
-                    ->time(),
-                Tables\Columns\TextColumn::make('close_time')
-                    ->time(),
                 Tables\Columns\TextColumn::make('sort_order')
                     ->numeric()
                     ->sortable(),
@@ -121,6 +147,15 @@ class LocationResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            PhotosRelationManager::class,
+            HoursRelationManager::class,
+            ActivitiesRelationManager::class,
+        ];
     }
 
     public static function getPages(): array

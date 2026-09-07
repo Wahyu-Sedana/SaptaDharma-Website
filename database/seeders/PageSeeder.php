@@ -38,6 +38,10 @@ class PageSeeder extends Seeder
                 'name' => 'Lokasi',
                 'slug' => 'locations',
             ],
+            [
+                'name' => 'Wejangan',
+                'slug' => 'wejangan',
+            ],
         ];
 
         foreach ($pages as $page) {

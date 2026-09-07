@@ -16,15 +16,35 @@ class Location extends Model
 
     protected $fillable = [
         'name',
+        'slug',
         'image',
+        'video',
         'address',
         'phone',
         'latitude',
         'longitude',
         'maps_link',
-        'open_time',
-        'close_time',
+        'tuntunan_name',
+        'tuntunan_photo',
         'sort_order',
         'status'
     ];
+
+    public function photos()
+    {
+        return $this->hasMany(LocationPhoto::class)
+            ->orderBy('sort_order');
+    }
+
+    public function hours()
+    {
+        return $this->hasMany(LocationHour::class)
+            ->orderBy('day');
+    }
+
+    public function activities()
+    {
+        return $this->hasMany(LocationActivity::class)
+            ->orderBy('sort_order');
+    }
 }

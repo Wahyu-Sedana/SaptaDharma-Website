@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useFetch } from '../useFetch';
 import { useLocale } from '../LocaleContext';
 import { api } from '../api';
+import { useSettings } from '../SettingsContext';
 import Loading from '../components/Loading';
 import ErrorState from '../components/ErrorState';
 import Hero from '../components/Hero';
@@ -9,12 +10,13 @@ import SectionHeading from '../components/SectionHeading';
 
 export default function Home() {
     const { locale } = useLocale();
+    const { setting } = useSettings();
     const { data, loading, error } = useFetch(() => api.home(locale), [locale]);
 
     if (loading) return <Loading />;
     if (error || !data) return <ErrorState />;
 
-    const { hero, sections, featured_article, latest_articles, featured_book, latest_books, locations } = data;
+    const { hero, sections, pokok_ajaran, featured_book, latest_books, locations } = data;
 
     return (
         <div>
@@ -73,46 +75,74 @@ export default function Home() {
                 </section>
             )}
 
-            {sections?.latest_articles && (
+            {sections?.symbol && (
                 <section className="bg-slate-50 dark:bg-slate-900/50 py-24">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                        <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
-                            <SectionHeading eyebrow={sections.latest_articles.subtitle} title={sections.latest_articles.title} />
-                            <Link
-                                to="/artikel"
-                                className="group inline-flex items-center gap-2 text-sm font-semibold text-green-600 hover:text-green-700"
-                            >
-                                {sections.latest_articles.button_text ?? 'Lihat Semua'}
-                                <i className="fas fa-arrow-right text-xs transition group-hover:translate-x-1"></i>
-                            </Link>
+                        <div className="mb-16 flex flex-col items-center gap-8 text-center lg:flex-row lg:text-left">
+                            {setting?.logo && (
+                                <img
+                                    src={setting.logo}
+                                    alt={sections.symbol.title}
+                                    className="h-28 w-28 shrink-0 object-contain drop-shadow-lg sm:h-36 sm:w-36"
+                                    loading="lazy"
+                                />
+                            )}
+                            <div>
+                                <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">
+                                    {sections.symbol.title}
+                                </h2>
+                                {sections.symbol.description && (
+                                    <p
+                                        className="prose prose-slate dark:prose-invert mt-4 max-w-3xl leading-relaxed text-slate-600 dark:text-slate-400"
+                                        dangerouslySetInnerHTML={{ __html: sections.symbol.description }}
+                                    />
+                                )}
+                            </div>
                         </div>
 
-                        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                            {(featured_article ? [featured_article, ...latest_articles] : latest_articles)
-                                .slice(0, 3)
-                                .map((article) => (
-                                    <Link
-                                        key={article.id}
-                                        to={`/artikel/${article.slug}`}
-                                        className="group overflow-hidden rounded-3xl bg-white dark:bg-slate-900 shadow-sm ring-1 ring-slate-900/5 dark:ring-white/10 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
-                                    >
-                                        <div className="overflow-hidden">
-                                            <img
-                                                src={article.image}
-                                                alt={article.title}
-                                                className="h-48 w-full object-cover transition duration-500 group-hover:scale-105"
-                                            />
-                                        </div>
-                                        <div className="p-6">
-                                            <span className="inline-flex rounded-full bg-green-50 dark:bg-green-500/10 px-3 py-1 text-xs font-semibold text-green-600 uppercase">
-                                                {article.category?.name}
-                                            </span>
-                                            <h3 className="mt-3 line-clamp-2 font-semibold text-slate-900 dark:text-white transition group-hover:text-green-600">
-                                                {article.title}
-                                            </h3>
-                                        </div>
-                                    </Link>
-                                ))}
+                        <div className="grid gap-8 lg:grid-cols-2">
+                            {sections?.sasanti && (
+                                <div className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-slate-900/5 dark:bg-slate-900 dark:ring-white/10">
+                                    <div className="flex items-center gap-3">
+                                        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-green-50 text-green-600 dark:bg-green-500/10">
+                                            <i className="fas fa-seedling"></i>
+                                        </span>
+                                        <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                                            {sections.sasanti.title}
+                                        </h3>
+                                    </div>
+
+                                    <div className="mt-6 rounded-2xl bg-green-50/60 p-6 dark:bg-green-500/10">
+                                        <i className="fas fa-quote-left text-lg text-green-600/40"></i>
+                                        <p
+                                            className="mt-2 text-lg leading-relaxed text-slate-700 italic dark:text-slate-300"
+                                            dangerouslySetInnerHTML={{ __html: sections.sasanti.description }}
+                                        />
+                                    </div>
+                                </div>
+                            )}
+
+                            {pokok_ajaran && (
+                                <div className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-slate-900/5 dark:bg-slate-900 dark:ring-white/10">
+                                    <div className="flex items-center gap-3">
+                                        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-green-50 text-green-600 dark:bg-green-500/10">
+                                            <i className="fas fa-book-open"></i>
+                                        </span>
+                                        <h3 className="text-xl font-bold text-slate-900 dark:text-white">{pokok_ajaran.title}</h3>
+                                    </div>
+
+                                    <ol className="mt-6 space-y-4">
+                                        {pokok_ajaran.items.map((item, index) => (
+                                            <li key={item.id} className="flex items-start gap-4">
+                                                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-green-100 text-xs font-bold text-green-700 dark:bg-green-500/20 dark:text-green-400">
+                                                    {index + 1}
+                                                </span>
+                                                <p className="text-slate-600 dark:text-slate-400">{item.description}</p>
+                                            </li>
+                                        ))}
+                                    </ol>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </section>

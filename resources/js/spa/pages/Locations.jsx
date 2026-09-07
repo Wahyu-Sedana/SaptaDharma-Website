@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useFetch } from '../useFetch';
 import { useLocale } from '../LocaleContext';
 import { api } from '../api';
@@ -55,17 +56,26 @@ export default function Locations() {
                                                 {location.phone}
                                             </p>
                                         )}
-                                        {location.maps_link && (
-                                            <a
-                                                href={location.maps_link}
-                                                target="_blank"
-                                                rel="noreferrer"
-                                                className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-green-600 hover:text-green-700"
+                                        <div className="mt-4 flex flex-wrap items-center gap-4">
+                                            <Link
+                                                to={`/sanggar/${location.slug}`}
+                                                className="inline-flex items-center gap-2 text-sm font-semibold text-green-600 hover:text-green-700"
                                             >
-                                                <i className="fas fa-map-marker-alt"></i>
-                                                Lihat Peta
-                                            </a>
-                                        )}
+                                                <i className="fas fa-circle-info"></i>
+                                                Lihat Detail
+                                            </Link>
+                                            {location.maps_link && (
+                                                <a
+                                                    href={location.maps_link}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
+                                                >
+                                                    <i className="fas fa-map-marker-alt"></i>
+                                                    Lihat Peta
+                                                </a>
+                                            )}
+                                        </div>
                                     </div>
                                 </div>
                             ))}

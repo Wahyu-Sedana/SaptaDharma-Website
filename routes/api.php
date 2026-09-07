@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\LocationController;
 use App\Http\Controllers\Api\SettingsController;
 use App\Http\Controllers\Api\TeachingController;
+use App\Http\Controllers\Api\WejanganController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/settings', [SettingsController::class, 'index']);
@@ -16,6 +17,8 @@ Route::get('/home', [HomeController::class, 'index']);
 Route::get('/teachings', [TeachingController::class, 'index']);
 
 Route::get('/history', [HistoryController::class, 'index']);
+
+Route::get('/history/highlights/{slug}', [HistoryController::class, 'showHighlight']);
 
 Route::get('/articles', [ArticleController::class, 'index']);
 
@@ -28,3 +31,7 @@ Route::get('/books/{slug}', [BookController::class, 'show']);
 Route::get('/books/{slug}/download', [BookController::class, 'download']);
 
 Route::get('/locations', [LocationController::class, 'index']);
+
+Route::get('/locations/{slug}', [LocationController::class, 'show']);
+
+Route::get('/wejangan', [WejanganController::class, 'index']);

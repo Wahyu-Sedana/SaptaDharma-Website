@@ -13,6 +13,7 @@ export default function Navbar({ siteName, logo }) {
     const LINKS = [
         { to: '/', label: t(locale, 'home') },
         { to: '/ajaran', label: t(locale, 'teachings') },
+        { to: '/wejangan', label: t(locale, 'wejangan') },
         { to: '/sejarah', label: t(locale, 'history') },
         { to: '/artikel', label: t(locale, 'articles') },
         { to: '/buku', label: t(locale, 'books') },

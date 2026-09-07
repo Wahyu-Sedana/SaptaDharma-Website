@@ -10,7 +10,7 @@ export function SettingsProvider({ children }) {
     const { data, loading } = useFetch(() => api.settings(locale), [locale]);
 
     return (
-        <SettingsContext.Provider value={{ setting: data?.setting ?? null, loading }}>
+        <SettingsContext.Provider value={{ setting: data?.setting ?? null, wejangans: data?.wejangans ?? [], loading }}>
             {children}
         </SettingsContext.Provider>
     );

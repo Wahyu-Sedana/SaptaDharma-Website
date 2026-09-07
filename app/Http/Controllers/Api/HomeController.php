@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\ArticleResource;
 use App\Http\Resources\BookResource;
 use App\Http\Resources\HeroResource;
 use App\Http\Resources\LocationResource;
+use App\Http\Resources\PokokAjaranResource;
 use App\Http\Resources\SectionResource;
-use App\Models\Article;
 use App\Models\Book;
 use App\Models\Hero;
 use App\Models\Location;
 use App\Models\Page;
+use App\Models\PokokAjaran;
 use App\Models\Section;
 use Illuminate\Http\JsonResponse;
 
@@ -32,17 +32,10 @@ class HomeController extends Controller
             ->get()
             ->keyBy('slug');
 
-        $featuredArticle = Article::with('category')
+        $pokokAjaran = PokokAjaran::with('items')
             ->where('status', 'publish')
-            ->latest('published_at')
+            ->orderBy('sort_order')
             ->first();
-
-        $latestArticles = Article::with('category')
-            ->where('status', 'publish')
-            ->latest('published_at')
-            ->skip(1)
-            ->take(3)
-            ->get();
 
         $featuredBook = Book::with('category')
             ->where('status', 'publish')
@@ -64,12 +57,12 @@ class HomeController extends Controller
             'hero' => $hero ? new HeroResource($hero) : null,
             'sections' => [
                 'about' => $this->section($sections, 'home-about'),
-                'latest_articles' => $this->section($sections, 'home-latest-articles'),
+                'symbol' => $this->section($sections, 'home-symbol'),
+                'sasanti' => $this->section($sections, 'home-sasanti'),
                 'latest_books' => $this->section($sections, 'home-latest-books'),
                 'locations' => $this->section($sections, 'home-locations'),
             ],
-            'featured_article' => $featuredArticle ? new ArticleResource($featuredArticle) : null,
-            'latest_articles' => ArticleResource::collection($latestArticles),
+            'pokok_ajaran' => $pokokAjaran ? new PokokAjaranResource($pokokAjaran) : null,
             'featured_book' => $featuredBook ? new BookResource($featuredBook) : null,
             'latest_books' => BookResource::collection($latestBooks),
             'locations' => LocationResource::collection($locations),

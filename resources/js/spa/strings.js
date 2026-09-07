@@ -6,6 +6,7 @@ const STRINGS = {
         articles: 'Artikel',
         books: 'Buku',
         locations: 'Sanggar',
+        wejangan: 'Wejangan',
     },
     en: {
         home: 'Home',
@@ -14,6 +15,7 @@ const STRINGS = {
         articles: 'Articles',
         books: 'Books',
         locations: 'Sanggar',
+        wejangan: 'Wejangan',
     },
 };
 

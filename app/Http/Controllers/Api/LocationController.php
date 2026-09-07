@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\GalleryResource;
 use App\Http\Resources\HeroResource;
+use App\Http\Resources\LocationDetailResource;
 use App\Http\Resources\LocationResource;
 use App\Http\Resources\SectionResource;
 use App\Models\Gallery;
@@ -30,7 +31,8 @@ class LocationController extends Controller
             ->get()
             ->keyBy('slug');
 
-        $locations = Location::where('status', 'publish')
+        $locations = Location::with('hours')
+            ->where('status', 'publish')
             ->orderBy('sort_order')
             ->get();
 
@@ -46,6 +48,20 @@ class LocationController extends Controller
             ],
             'locations' => LocationResource::collection($locations),
             'galleries' => GalleryResource::collection($galleries),
+        ]);
+    }
+
+    public function show(string $slug): JsonResponse
+    {
+        $location = Location::with(['photos', 'hours', 'activities' => function ($query) {
+            $query->where('status', 'publish');
+        }])
+            ->where('slug', $slug)
+            ->where('status', 'publish')
+            ->firstOrFail();
+
+        return response()->json([
+            'location' => new LocationDetailResource($location),
         ]);
     }
 

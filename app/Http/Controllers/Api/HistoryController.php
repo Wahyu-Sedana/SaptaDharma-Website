@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\FounderResource;
 use App\Http\Resources\HeroResource;
+use App\Http\Resources\HistoryHighlightDetailResource;
+use App\Http\Resources\HistoryHighlightResource;
 use App\Http\Resources\HistoryTimelineResource;
 use App\Http\Resources\SectionResource;
 use App\Models\Founder;
 use App\Models\Hero;
+use App\Models\HistoryHighlight;
 use App\Models\HistoryTimeline;
 use App\Models\Page;
 use App\Models\Section;
@@ -30,6 +33,10 @@ class HistoryController extends Controller
             ->get()
             ->keyBy('slug');
 
+        $highlights = HistoryHighlight::where('status', 'publish')
+            ->orderBy('sort_order')
+            ->get();
+
         $timelines = HistoryTimeline::where('status', 'publish')
             ->orderBy('sort_order')
             ->get();
@@ -45,8 +52,28 @@ class HistoryController extends Controller
                 'timeline' => $this->section($sections, 'history-timeline'),
                 'founders' => $this->section($sections, 'history-founder'),
             ],
+            'highlights' => HistoryHighlightResource::collection($highlights),
             'timelines' => HistoryTimelineResource::collection($timelines),
             'founders' => FounderResource::collection($founders),
+        ]);
+    }
+
+    public function showHighlight(string $slug): JsonResponse
+    {
+        $page = Page::where('slug', 'history')->firstOrFail();
+
+        $hero = Hero::where('page_id', $page->id)
+            ->where('status', 'publish')
+            ->latest()
+            ->first();
+
+        $highlight = HistoryHighlight::where('slug', $slug)
+            ->where('status', 'publish')
+            ->firstOrFail();
+
+        return response()->json([
+            'hero' => $hero ? new HeroResource($hero) : null,
+            'highlight' => new HistoryHighlightDetailResource($highlight),
         ]);
     }
 

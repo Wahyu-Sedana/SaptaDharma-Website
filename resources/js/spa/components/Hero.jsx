@@ -1,8 +1,36 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSettings } from '../SettingsContext';
 
+function WejanganSlider({ wejangans }) {
+    const [index, setIndex] = useState(0);
+
+    useEffect(() => {
+        if (wejangans.length < 2) return;
+
+        const timer = setInterval(() => {
+            setIndex((current) => (current + 1) % wejangans.length);
+        }, 5000);
+
+        return () => clearInterval(timer);
+    }, [wejangans.length]);
+
+    if (wejangans.length === 0) return null;
+
+    return (
+        <div className="mt-4 max-w-xs text-center sm:max-w-sm">
+            <p
+                key={wejangans[index].id}
+                className="animate-fade-down text-sm leading-relaxed text-slate-300 italic sm:text-base"
+            >
+                “{wejangans[index].content}”
+            </p>
+        </div>
+    );
+}
+
 export default function Hero({ hero, breadcrumb, primaryAction, compact = false }) {
-    const { setting } = useSettings();
+    const { setting, wejangans } = useSettings();
     const title = hero?.title ?? 'Sapta Darma';
     const subtitle = hero?.subtitle ?? '';
     const image = hero?.image;
@@ -58,13 +86,14 @@ export default function Hero({ hero, breadcrumb, primaryAction, compact = false 
                     </div>
 
                     {logo && (
-                        <div className="shrink-0 animate-fade-up">
+                        <div className="flex shrink-0 flex-col items-center animate-fade-up lg:-mt-16">
                             <img
                                 src={logo}
                                 alt={setting?.site_name ?? 'Sapta Darma'}
                                 className="h-32 w-32 object-contain drop-shadow-2xl sm:h-40 sm:w-40 lg:h-56 lg:w-56"
                                 loading="lazy"
                             />
+                            <WejanganSlider wejangans={wejangans} />
                         </div>
                     )}
                 </div>

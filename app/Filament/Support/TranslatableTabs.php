@@ -18,18 +18,29 @@ class TranslatableTabs
     public static function make(array $fields): Tabs
     {
         $locales = config('languages.available');
+        $defaultLocale = config('languages.default');
 
         return Tabs::make('translations')
             ->contained(false)
             ->columnSpanFull()
             ->tabs(
                 collect($locales)
-                    ->map(function (string $localeLabel, string $locale) use ($fields) {
+                    ->map(function (string $localeLabel, string $locale) use ($fields, $defaultLocale) {
                         return Tab::make($locale)
                             ->label($localeLabel)
                             ->schema(
                                 collect($fields)
-                                    ->map(fn (Closure $factory, string $name) => $factory("{$name}.{$locale}"))
+                                    ->map(function (Closure $factory, string $name) use ($locale, $defaultLocale) {
+                                        $field = $factory("{$name}.{$locale}");
+
+                                        // Only the default locale is mandatory; other locales
+                                        // may be left blank without failing validation.
+                                        if ($locale !== $defaultLocale && method_exists($field, 'required')) {
+                                            $field->required(false);
+                                        }
+
+                                        return $field;
+                                    })
                                     ->values()
                                     ->all()
                             );
