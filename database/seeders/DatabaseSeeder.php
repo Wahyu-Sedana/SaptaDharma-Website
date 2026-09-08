@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             BookCategorySeeder::class,
             BookSeeder::class,
             SectionSeeder::class,
+            HomeSymbolSectionSeeder::class,
             SectionItemSeeder::class,
             PokokAjaranSeeder::class,
             LuhurValueSeeder::class,
