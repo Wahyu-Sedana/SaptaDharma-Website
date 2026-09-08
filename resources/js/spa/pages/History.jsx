@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useFetch } from '../useFetch';
 import { useLocale } from '../LocaleContext';
@@ -9,58 +8,29 @@ import Hero from '../components/Hero';
 import SectionHeading from '../components/SectionHeading';
 
 function HighlightSlider({ highlights }) {
-    const [index, setIndex] = useState(0);
-    const item = highlights[index];
-
-    function go(direction) {
-        setIndex((current) => (current + direction + highlights.length) % highlights.length);
-    }
-
     return (
-        <div>
-            <div
-                key={item.id}
-                className="animate-fade-down flex flex-col items-center gap-6 overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-slate-900/5 dark:bg-slate-900 dark:ring-white/10 sm:flex-row"
-            >
-                <img src={item.image} alt={item.title} className="h-48 w-full object-cover sm:h-36 sm:w-56 sm:shrink-0" />
-                <div className="flex-1 px-6 sm:px-0">
-                    <p className="text-lg font-medium text-slate-700 dark:text-slate-300">{item.title}</p>
-                    {item.excerpt && (
-                        <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">{item.excerpt}</p>
-                    )}
-                </div>
-                <Link
-                    to={`/sejarah/${item.slug}`}
-                    className="mb-6 inline-flex shrink-0 items-center gap-2 rounded-full bg-green-600 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-green-700 sm:mr-6 sm:mb-0"
+        <div className="space-y-6">
+            {highlights.map((item) => (
+                <div
+                    key={item.id}
+                    className="flex flex-col items-center gap-6 overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-slate-900/5 dark:bg-slate-900 dark:ring-white/10 sm:flex-row"
                 >
-                    Lihat Detail
-                    <i className="fas fa-arrow-right text-xs"></i>
-                </Link>
-            </div>
-
-            {highlights.length > 1 && (
-                <div className="mt-4 flex items-center justify-center gap-4">
-                    <button
-                        type="button"
-                        onClick={() => go(-1)}
-                        aria-label="Sebelumnya"
-                        className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition hover:bg-green-50 hover:text-green-600 dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-green-500/10"
+                    <img src={item.image} alt={item.title} className="h-48 w-full object-cover sm:h-36 sm:w-56 sm:shrink-0" />
+                    <div className="flex-1 px-6 sm:px-0">
+                        <p className="text-lg font-medium text-slate-700 dark:text-slate-300">{item.title}</p>
+                        {item.excerpt && (
+                            <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">{item.excerpt}</p>
+                        )}
+                    </div>
+                    <Link
+                        to={`/sejarah/${item.slug}`}
+                        className="mb-6 inline-flex shrink-0 items-center gap-2 rounded-full bg-green-600 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-green-700 sm:mr-6 sm:mb-0"
                     >
-                        <i className="fas fa-chevron-left"></i>
-                    </button>
-                    <span className="text-sm text-slate-500 dark:text-slate-400">
-                        {index + 1} / {highlights.length}
-                    </span>
-                    <button
-                        type="button"
-                        onClick={() => go(1)}
-                        aria-label="Berikutnya"
-                        className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition hover:bg-green-50 hover:text-green-600 dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-green-500/10"
-                    >
-                        <i className="fas fa-chevron-right"></i>
-                    </button>
+                        Lihat Detail
+                        <i className="fas fa-arrow-right text-xs"></i>
+                    </Link>
                 </div>
-            )}
+            ))}
         </div>
     );
 }

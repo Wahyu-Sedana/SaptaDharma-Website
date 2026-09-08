@@ -32,8 +32,8 @@ class BookCategoryResource extends Resource
                                 ->required()
                                 ->maxLength(255)
                                 ->live(onBlur: true)
-                                ->afterStateUpdated(function (?string $state, callable $set) use ($name) {
-                                    if (str_ends_with($name, '.id')) {
+                                ->afterStateUpdated(function (?string $state, callable $set, callable $get) use ($name) {
+                                    if (str_ends_with($name, '.id') && blank($get('slug'))) {
                                         $set('slug', Str::slug((string) $state));
                                     }
                                 }),
