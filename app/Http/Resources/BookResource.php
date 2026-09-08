@@ -14,6 +14,7 @@ class BookResource extends JsonResource
             'title' => $this->title ?: '(Tanpa judul)',
             'slug' => $this->slug,
             'author' => $this->author ?: '-',
+            'year' => $this->year,
             'cover' => $this->cover ? asset('storage/' . $this->cover) : asset('images/no-image.png'),
             'category' => $this->whenLoaded('category', fn () => [
                 'name' => $this->category?->name ?: 'Umum',

@@ -43,6 +43,15 @@ class BookController extends Controller
                     $q->where('slug', $request->query('category'));
                 });
             })
+            ->when($request->query('search'), function ($query) use ($request) {
+                $search = $request->query('search');
+
+                $query->where(function ($q) use ($search) {
+                    $q->where('title->id', 'like', "%{$search}%")
+                        ->orWhere('title->en', 'like', "%{$search}%")
+                        ->orWhere('author', 'like', "%{$search}%");
+                });
+            })
             ->latest()
             ->paginate(12)
             ->withQueryString();

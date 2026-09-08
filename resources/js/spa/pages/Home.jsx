@@ -185,7 +185,7 @@ export default function Home() {
                                 <Link
                                     key={book.id}
                                     to={`/buku/${book.slug}`}
-                                    className="group overflow-hidden rounded-3xl bg-white dark:bg-slate-900 shadow-sm ring-1 ring-slate-900/5 dark:ring-white/10 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+                                    className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-900/5 transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:bg-slate-900 dark:ring-white/10"
                                 >
                                     <div className="overflow-hidden bg-slate-100 dark:bg-slate-800">
                                         <img
@@ -194,11 +194,29 @@ export default function Home() {
                                             className="h-56 w-full object-contain transition duration-500 group-hover:scale-105"
                                         />
                                     </div>
-                                    <div className="p-5">
-                                        <h3 className="line-clamp-2 font-semibold text-slate-900 dark:text-white transition group-hover:text-green-600">
+                                    <div className="flex flex-1 flex-col p-5">
+                                        <span className="mb-3 inline-flex w-fit items-center rounded-full border border-green-500/40 px-3 py-1 text-xs font-semibold tracking-wide text-green-600 uppercase dark:text-green-400">
+                                            {book.category?.name}
+                                        </span>
+                                        <h3 className="line-clamp-2 font-semibold text-slate-900 transition group-hover:text-green-600 dark:text-white">
                                             {book.title}
                                         </h3>
-                                        <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">{book.author}</p>
+                                        <p className="mt-2 flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
+                                            <i className="far fa-file-alt"></i>
+                                            {book.category?.name}
+                                            {book.year && (
+                                                <>
+                                                    <span>|</span>
+                                                    {book.year}
+                                                </>
+                                            )}
+                                        </p>
+                                        <div className="mt-auto pt-4">
+                                            <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 transition group-hover:border-green-500 group-hover:text-green-600 dark:border-white/15 dark:text-slate-200 dark:group-hover:text-green-400">
+                                                Baca dokumen
+                                                <i className="fas fa-arrow-right text-xs transition group-hover:translate-x-1"></i>
+                                            </span>
+                                        </div>
                                     </div>
                                 </Link>
                             ))}

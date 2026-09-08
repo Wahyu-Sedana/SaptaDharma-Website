@@ -19,7 +19,7 @@ function HighlightSlider({ highlights }) {
                     <div className="flex-1 px-6 sm:px-0">
                         <p className="text-lg font-medium text-slate-700 dark:text-slate-300">{item.title}</p>
                         {item.excerpt && (
-                            <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">{item.excerpt}</p>
+                            <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">{item.excerpt}</p>
                         )}
                     </div>
                     <Link
