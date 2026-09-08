@@ -100,7 +100,7 @@ export default function Home() {
                             </div>
                         </div>
 
-                        <div className="grid gap-8 lg:grid-cols-2">
+                        <div className="grid items-start gap-8 lg:grid-cols-2">
                             {sections?.sasanti && (
                                 <div className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-slate-900/5 dark:bg-slate-900 dark:ring-white/10">
                                     <div className="flex items-center gap-3">
