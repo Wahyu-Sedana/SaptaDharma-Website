@@ -3,6 +3,14 @@
 use App\Models\WebSetting;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/superadmin-locale/{locale}', function (string $locale) {
+    if (array_key_exists($locale, config('languages.available'))) {
+        session(['admin_locale' => $locale]);
+    }
+
+    return redirect()->back();
+})->name('admin.locale.switch');
+
 Route::get('/{any}', function () {
     $setting = WebSetting::first();
 

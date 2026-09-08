@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Pages\Dashboard;
+use App\Http\Middleware\SetAdminLocale;
 use App\Models\WebSetting;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -145,6 +146,60 @@ class AdminPanelProvider extends PanelProvider
                     </style>
                 '
             )
+            ->renderHook(
+                PanelsRenderHook::USER_MENU_BEFORE,
+                function () {
+                    $current = session('admin_locale', config('languages.default'));
+                    $languages = config('languages.available');
+                    $flags = [
+                        'id' => '🇮🇩',
+                        'en' => '🇬🇧',
+                    ];
+
+                    $currentFlag = $flags[$current] ?? '';
+                    $currentLabel = $languages[$current] ?? strtoupper($current);
+
+                    $options = collect($languages)->map(function (string $label, string $locale) use ($current, $flags) {
+                        $active = $locale === $current;
+                        $flag = $flags[$locale] ?? '';
+
+                        return '<a href="' . route('admin.locale.switch', $locale) . '"
+                                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors ' .
+                                ($active
+                                    ? 'bg-primary-50 text-primary-700 dark:bg-primary-500/10 dark:text-primary-400'
+                                    : 'text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-white/5') . '"
+                                >
+                                    <span style="font-size:16px;line-height:1;">' . $flag . '</span>
+                                    <span>' . e($label) . '</span>
+                                </a>';
+                    })->implode('');
+
+                    return new HtmlString('
+                        <div x-data="{ open: false }" @click.outside="open = false" class="relative px-2">
+                            <button
+                                type="button"
+                                @click="open = !open"
+                                class="fi-badge inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium text-gray-500 transition-colors hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-white/5"
+                            >
+                                <span style="font-size:14px;line-height:1;">' . $currentFlag . '</span>
+                                <span>' . e($currentLabel) . '</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width:14px;height:14px;" :style="open ? \'transform:rotate(180deg)\' : \'\'">
+                                    <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+
+                            <div
+                                x-show="open"
+                                x-cloak
+                                x-transition
+                                class="absolute right-0 z-50 mt-2 w-40 rounded-xl border border-gray-200 bg-white p-1 shadow-lg dark:border-white/10 dark:bg-gray-900"
+                            >
+                                ' . $options . '
+                            </div>
+                        </div>
+                    ');
+                }
+            )
             ->favicon(function () {
                 $favicon = WebSetting::first()?->favicon;
 
@@ -165,6 +220,7 @@ class AdminPanelProvider extends PanelProvider
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
                 StartSession::class,
+                SetAdminLocale::class,
                 AuthenticateSession::class,
                 ShareErrorsFromSession::class,
                 VerifyCsrfToken::class,
