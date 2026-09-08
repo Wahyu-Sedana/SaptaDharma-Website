@@ -10,12 +10,14 @@ import SectionHeading from '../components/SectionHeading';
 export default function Teachings() {
     const { locale } = useLocale();
     const { data, loading, error } = useFetch(() => api.teachings(locale), [locale]);
+    const [activeValueIndex, setActiveValueIndex] = useState(0);
     const [activeIndex, setActiveIndex] = useState(0);
 
     if (loading) return <Loading />;
     if (error || !data) return <ErrorState />;
 
     const { hero, sections, luhur_values, pokok_ajarans } = data;
+    const activeValue = luhur_values?.[activeValueIndex];
     const active = pokok_ajarans?.[activeIndex];
     const activeItem = active?.items?.[0];
 
@@ -32,19 +34,42 @@ export default function Teachings() {
                             align="center"
                         />
 
-                        <div className="mt-14 flex flex-wrap justify-center gap-6">
-                            {luhur_values?.map((value) => (
-                                <div
-                                    key={value.id}
-                                    className="group w-full rounded-3xl bg-white dark:bg-slate-900 p-6 text-center shadow-sm ring-1 ring-slate-900/5 dark:ring-white/10 transition duration-300 hover:-translate-y-1 hover:shadow-xl sm:w-[calc(50%-0.75rem)] lg:w-[calc(20%-1.2rem)]"
-                                >
-                                    <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500 to-emerald-400 text-white shadow-lg shadow-green-500/20 transition group-hover:scale-110">
-                                        <i className={`${value.icon} text-2xl`}></i>
-                                    </div>
-                                    <h3 className="font-semibold text-slate-900 dark:text-white">{value.title}</h3>
-                                    <p className="mt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400">{value.description}</p>
-                                </div>
-                            ))}
+                        <div className="mt-14 grid gap-8 lg:grid-cols-3">
+                            <div className="space-y-2 lg:col-span-1">
+                                {luhur_values?.map((value, index) => (
+                                    <button
+                                        key={value.id}
+                                        type="button"
+                                        onClick={() => setActiveValueIndex(index)}
+                                        className={`flex w-full items-center gap-3 rounded-2xl px-5 py-4 text-left text-sm font-medium transition ${
+                                            index === activeValueIndex
+                                                ? 'bg-green-500 text-white shadow-lg shadow-green-500/25'
+                                                : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 shadow-sm ring-1 ring-slate-900/5 dark:ring-white/10 hover:bg-green-50 dark:hover:bg-green-500/10'
+                                        }`}
+                                    >
+                                        <span
+                                            className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${
+                                                index === activeValueIndex ? 'bg-white/20' : 'bg-green-50 dark:bg-green-500/10'
+                                            }`}
+                                        >
+                                            <i className={`${value.icon} ${index === activeValueIndex ? 'text-white' : 'text-green-500'}`}></i>
+                                        </span>
+                                        {value.title}
+                                    </button>
+                                ))}
+                            </div>
+
+                            <div className="rounded-3xl bg-white dark:bg-slate-900 p-8 shadow-sm ring-1 ring-slate-900/5 dark:ring-white/10 lg:col-span-2">
+                                {activeValue && (
+                                    <>
+                                        <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500 to-emerald-400 text-white shadow-lg shadow-green-500/20">
+                                            <i className={`${activeValue.icon} text-2xl`}></i>
+                                        </div>
+                                        <h3 className="text-xl font-bold text-slate-900 dark:text-white">{activeValue.title}</h3>
+                                        <p className="mt-4 leading-relaxed text-slate-600 dark:text-slate-400">{activeValue.description}</p>
+                                    </>
+                                )}
+                            </div>
                         </div>
                     </div>
                 </section>
