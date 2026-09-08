@@ -83,7 +83,7 @@ export default function Home() {
                                 <img
                                     src={setting.logo}
                                     alt={sections.symbol.title}
-                                    className="h-28 w-28 shrink-0 object-contain drop-shadow-lg sm:h-36 sm:w-36"
+                                    className="h-36 w-36 shrink-0 object-contain drop-shadow-lg sm:h-44 sm:w-44"
                                     loading="lazy"
                                 />
                             )}
@@ -177,11 +177,11 @@ export default function Home() {
                                     to={`/buku/${book.slug}`}
                                     className="group overflow-hidden rounded-3xl bg-white dark:bg-slate-900 shadow-sm ring-1 ring-slate-900/5 dark:ring-white/10 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
                                 >
-                                    <div className="overflow-hidden">
+                                    <div className="overflow-hidden bg-slate-100 dark:bg-slate-800">
                                         <img
                                             src={book.cover}
                                             alt={book.title}
-                                            className="h-56 w-full object-cover transition duration-500 group-hover:scale-105"
+                                            className="h-56 w-full object-contain transition duration-500 group-hover:scale-105"
                                         />
                                     </div>
                                     <div className="p-5">
@@ -225,8 +225,32 @@ export default function Home() {
                                         />
                                     </div>
                                     <div className="p-6">
-                                        <h3 className="font-semibold text-slate-900 dark:text-white">{location.name}</h3>
-                                        <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">{location.address}</p>
+                                        <div className="mb-2 flex items-center justify-between gap-3">
+                                            <h3 className="font-semibold text-slate-900 dark:text-white">{location.name}</h3>
+                                            <span
+                                                className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium ${
+                                                    location.is_open
+                                                        ? 'bg-green-100 text-green-700 dark:bg-green-500/10 dark:text-green-400'
+                                                        : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
+                                                }`}
+                                            >
+                                                {location.is_open ? 'Buka' : 'Tutup'}
+                                            </span>
+                                        </div>
+                                        <p className="text-sm text-slate-500 dark:text-slate-400">{location.address}</p>
+                                        {location.phone && (
+                                            <p className="mt-2 flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
+                                                <i className="fas fa-phone text-green-500"></i>
+                                                {location.phone}
+                                            </p>
+                                        )}
+                                        <Link
+                                            to={`/sanggar/${location.slug}`}
+                                            className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-green-600 hover:text-green-700"
+                                        >
+                                            <i className="fas fa-circle-info"></i>
+                                            Lihat Detail
+                                        </Link>
                                     </div>
                                 </div>
                             ))}

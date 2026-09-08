@@ -47,6 +47,10 @@ class PokokAjaranResource extends Resource
 
                 Forms\Components\Section::make('Pengaturan')
                     ->schema([
+                        Forms\Components\Toggle::make('is_featured')
+                            ->label('Tampilkan di Homepage')
+                            ->helperText('Hanya satu grup yang bisa aktif di homepage. Mengaktifkan ini otomatis menonaktifkan grup lain yang sebelumnya aktif.')
+                            ->columnSpanFull(),
                         Forms\Components\TextInput::make('sort_order')
                             ->label('Urutan')
                             ->required()
@@ -76,6 +80,9 @@ class PokokAjaranResource extends Resource
                 Tables\Columns\TextColumn::make('items_count')
                     ->label('Item')
                     ->counts('items'),
+                Tables\Columns\IconColumn::make('is_featured')
+                    ->label('Homepage')
+                    ->boolean(),
                 Tables\Columns\TextColumn::make('sort_order')
                     ->numeric()
                     ->sortable(),

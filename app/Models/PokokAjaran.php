@@ -17,9 +17,25 @@ class PokokAjaran extends Model
     protected $fillable = [
         'title',
         'slug',
+        'is_featured',
         'sort_order',
         'status'
     ];
+
+    protected $casts = [
+        'is_featured' => 'boolean',
+    ];
+
+    protected static function booted(): void
+    {
+        static::saved(function (self $pokokAjaran) {
+            if ($pokokAjaran->is_featured) {
+                static::where('id', '!=', $pokokAjaran->id)
+                    ->where('is_featured', true)
+                    ->update(['is_featured' => false]);
+            }
+        });
+    }
 
     public function items()
     {

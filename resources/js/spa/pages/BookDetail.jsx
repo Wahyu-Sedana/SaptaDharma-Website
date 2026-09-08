@@ -21,11 +21,9 @@ export default function BookDetail() {
                 <div className="blob animate-float -top-24 -right-24 h-96 w-96 bg-green-600/20" />
 
                 <div className="relative z-10 mx-auto grid w-full max-w-6xl gap-12 px-4 py-24 sm:px-6 md:grid-cols-3">
-                    <img
-                        src={book.cover}
-                        alt={book.title}
-                        className="mx-auto h-80 w-56 rounded-2xl object-cover shadow-2xl ring-1 ring-white/10"
-                    />
+                    <div className="mx-auto flex h-80 w-56 items-center justify-center rounded-2xl bg-white/5 shadow-2xl ring-1 ring-white/10">
+                        <img src={book.cover} alt={book.title} className="h-full w-full rounded-2xl object-contain" />
+                    </div>
 
                     <div className="md:col-span-2">
                         <nav className="mb-6 flex items-center gap-2 text-sm text-slate-400">
@@ -113,11 +111,11 @@ export default function BookDetail() {
                                     to={`/buku/${item.slug}`}
                                     className="group overflow-hidden rounded-3xl bg-white dark:bg-slate-900 shadow-sm ring-1 ring-slate-900/5 dark:ring-white/10 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
                                 >
-                                    <div className="overflow-hidden">
+                                    <div className="overflow-hidden bg-slate-100 dark:bg-slate-800">
                                         <img
                                             src={item.cover}
                                             alt={item.title}
-                                            className="h-48 w-full object-cover transition duration-500 group-hover:scale-105"
+                                            className="h-48 w-full object-contain transition duration-500 group-hover:scale-105"
                                         />
                                     </div>
                                     <div className="p-5">

@@ -83,11 +83,11 @@ export default function Books() {
                                     to={`/buku/${book.slug}`}
                                     className="group overflow-hidden rounded-3xl bg-white dark:bg-slate-900 shadow-sm ring-1 ring-slate-900/5 dark:ring-white/10 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
                                 >
-                                    <div className="overflow-hidden">
+                                    <div className="overflow-hidden bg-slate-100 dark:bg-slate-800">
                                         <img
                                             src={book.cover}
                                             alt={book.title}
-                                            className="h-56 w-full object-cover transition duration-500 group-hover:scale-105"
+                                            className="h-56 w-full object-contain transition duration-500 group-hover:scale-105"
                                         />
                                     </div>
                                     <div className="p-5">

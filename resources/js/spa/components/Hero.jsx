@@ -10,7 +10,7 @@ function WejanganSlider({ wejangans }) {
 
         const timer = setInterval(() => {
             setIndex((current) => (current + 1) % wejangans.length);
-        }, 5000);
+        }, 10000);
 
         return () => clearInterval(timer);
     }, [wejangans.length]);
