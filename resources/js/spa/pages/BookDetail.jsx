@@ -119,7 +119,7 @@ export default function BookDetail() {
                                         />
                                     </div>
                                     <div className="p-5">
-                                        <h3 className="line-clamp-2 font-semibold text-slate-900 dark:text-white transition group-hover:text-green-600">
+                                        <h3 className="font-semibold text-slate-900 dark:text-white transition group-hover:text-green-600">
                                             {item.title}
                                         </h3>
                                     </div>

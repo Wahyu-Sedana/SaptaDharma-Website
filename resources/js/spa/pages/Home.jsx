@@ -198,7 +198,7 @@ export default function Home() {
                                         <span className="mb-3 inline-flex w-fit items-center rounded-full border border-green-500/40 px-3 py-1 text-xs font-semibold tracking-wide text-green-600 uppercase dark:text-green-400">
                                             {book.category?.name}
                                         </span>
-                                        <h3 className="line-clamp-2 font-semibold text-slate-900 transition group-hover:text-green-600 dark:text-white">
+                                        <h3 className="font-semibold text-slate-900 transition group-hover:text-green-600 dark:text-white">
                                             {book.title}
                                         </h3>
                                         <p className="mt-2 flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
