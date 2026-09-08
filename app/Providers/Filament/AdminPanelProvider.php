@@ -206,6 +206,7 @@ class AdminPanelProvider extends PanelProvider
                 return $favicon ? asset('storage/' . $favicon) : null;
             })
             ->login()
+            ->profile()
             ->sidebarCollapsibleOnDesktop(true)
             ->colors([
                 'primary' => Color::Green,
