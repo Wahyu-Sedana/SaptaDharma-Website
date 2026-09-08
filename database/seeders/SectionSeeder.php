@@ -60,7 +60,7 @@ class SectionSeeder extends Seeder
             'teachings' => [
                 [
                     'slug' => 'teaching-nilai-nilai-luhur',
-                    'title' => ['id' => 'Nilai-Nilai Budi Luhur', 'en' => 'Noble Values'],
+                    'title' => ['id' => 'Wewarah Tujuh', 'en' => 'The Seven Teachings'],
                     'subtitle' => ['id' => 'Ajaran', 'en' => 'Teachings'],
                     'description' => [
                         'id' => 'Nilai-nilai budi luhur yang menjadi pedoman perilaku warga Sapta Darma sehari-hari.',

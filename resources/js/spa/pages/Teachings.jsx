@@ -32,11 +32,11 @@ export default function Teachings() {
                             align="center"
                         />
 
-                        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+                        <div className="mt-14 flex flex-wrap justify-center gap-6">
                             {luhur_values?.map((value) => (
                                 <div
                                     key={value.id}
-                                    className="group rounded-3xl bg-white dark:bg-slate-900 p-6 text-center shadow-sm ring-1 ring-slate-900/5 dark:ring-white/10 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+                                    className="group w-full rounded-3xl bg-white dark:bg-slate-900 p-6 text-center shadow-sm ring-1 ring-slate-900/5 dark:ring-white/10 transition duration-300 hover:-translate-y-1 hover:shadow-xl sm:w-[calc(50%-0.75rem)] lg:w-[calc(20%-1.2rem)]"
                                 >
                                     <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500 to-emerald-400 text-white shadow-lg shadow-green-500/20 transition group-hover:scale-110">
                                         <i className={`${value.icon} text-2xl`}></i>
