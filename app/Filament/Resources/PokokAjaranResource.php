@@ -11,6 +11,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
 
 class PokokAjaranResource extends Resource
 {
@@ -30,8 +31,18 @@ class PokokAjaranResource extends Resource
                             'title' => fn (string $name) => Forms\Components\TextInput::make($name)
                                 ->label('Judul')
                                 ->required()
-                                ->maxLength(255),
+                                ->maxLength(255)
+                                ->live(onBlur: true)
+                                ->afterStateUpdated(function (?string $state, callable $set) use ($name) {
+                                    if (str_ends_with($name, '.id')) {
+                                        $set('slug', Str::slug((string) $state));
+                                    }
+                                }),
                         ]),
+                        Forms\Components\TextInput::make('slug')
+                            ->required()
+                            ->maxLength(255)
+                            ->unique(ignoreRecord: true),
                     ]),
 
                 Forms\Components\Section::make('Pengaturan')
@@ -59,6 +70,8 @@ class PokokAjaranResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('slug')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('items_count')
                     ->label('Item')

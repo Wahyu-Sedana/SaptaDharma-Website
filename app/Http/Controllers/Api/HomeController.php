@@ -34,7 +34,7 @@ class HomeController extends Controller
 
         $pokokAjaran = PokokAjaran::with('items')
             ->where('status', 'publish')
-            ->orderBy('sort_order')
+            ->where('slug', 'wewarah-tujuh')
             ->first();
 
         $featuredBook = Book::with('category')

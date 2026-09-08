@@ -16,6 +16,7 @@ class PokokAjaran extends Model
 
     protected $fillable = [
         'title',
+        'slug',
         'sort_order',
         'status'
     ];
