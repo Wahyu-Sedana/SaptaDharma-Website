@@ -23,7 +23,12 @@ function HighlightSlider({ highlights }) {
                 className="animate-fade-down flex flex-col items-center gap-6 overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-slate-900/5 dark:bg-slate-900 dark:ring-white/10 sm:flex-row"
             >
                 <img src={item.image} alt={item.title} className="h-48 w-full object-cover sm:h-36 sm:w-56 sm:shrink-0" />
-                <p className="flex-1 px-6 text-lg font-medium text-slate-700 dark:text-slate-300 sm:px-0">{item.title}</p>
+                <div className="flex-1 px-6 sm:px-0">
+                    <p className="text-lg font-medium text-slate-700 dark:text-slate-300">{item.title}</p>
+                    {item.excerpt && (
+                        <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">{item.excerpt}</p>
+                    )}
+                </div>
                 <Link
                     to={`/sejarah/${item.slug}`}
                     className="mb-6 inline-flex shrink-0 items-center gap-2 rounded-full bg-green-600 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-green-700 sm:mr-6 sm:mb-0"
