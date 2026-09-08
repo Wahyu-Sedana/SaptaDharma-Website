@@ -137,7 +137,10 @@ export default function Home() {
                                                 <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-green-100 text-xs font-bold text-green-700 dark:bg-green-500/20 dark:text-green-400">
                                                     {index + 1}
                                                 </span>
-                                                <p className="text-slate-600 dark:text-slate-400">{item.description}</p>
+                                                <div
+                                                    className="prose prose-sm prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400"
+                                                    dangerouslySetInnerHTML={{ __html: item.description }}
+                                                />
                                             </li>
                                         ))}
                                     </ol>

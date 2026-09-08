@@ -85,7 +85,10 @@ export default function Teachings() {
                                             className="mb-6 h-56 w-full rounded-2xl object-cover"
                                         />
                                         <h3 className="text-xl font-bold text-slate-900 dark:text-white">{activeItem.title}</h3>
-                                        <p className="mt-4 leading-relaxed text-slate-600 dark:text-slate-400">{activeItem.description}</p>
+                                        <div
+                                            className="prose prose-slate dark:prose-invert mt-4 max-w-none leading-relaxed text-slate-600 dark:text-slate-400"
+                                            dangerouslySetInnerHTML={{ __html: activeItem.description }}
+                                        />
                                         {activeItem.quote && (
                                             <blockquote className="mt-6 rounded-2xl bg-green-50 dark:bg-green-500/10 p-5 text-sm text-green-800 dark:text-green-300 italic">
                                                 &ldquo;{activeItem.quote}&rdquo;
