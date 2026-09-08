@@ -131,19 +131,29 @@ export default function Home() {
                                         <h3 className="text-xl font-bold text-slate-900 dark:text-white">{pokok_ajaran.title}</h3>
                                     </div>
 
-                                    <ol className="mt-6 space-y-4">
+                                    <div className="mt-6 space-y-3">
                                         {pokok_ajaran.items.map((item, index) => (
-                                            <li key={item.id} className="flex items-start gap-4">
-                                                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-green-100 text-xs font-bold text-green-700 dark:bg-green-500/20 dark:text-green-400">
-                                                    {index + 1}
+                                            <div
+                                                key={item.id}
+                                                className={`flex items-center gap-4 rounded-2xl px-5 py-4 transition ${
+                                                    index === 0
+                                                        ? 'bg-green-500 text-white shadow-lg shadow-green-500/25'
+                                                        : 'text-slate-700 ring-1 ring-slate-900/5 dark:text-slate-300 dark:ring-white/10'
+                                                }`}
+                                            >
+                                                <span
+                                                    className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${
+                                                        index === 0 ? 'bg-white/20' : 'bg-green-50 dark:bg-green-500/10'
+                                                    }`}
+                                                >
+                                                    <i
+                                                        className={`fas fa-leaf ${index === 0 ? 'text-white' : 'text-green-600 dark:text-green-400'}`}
+                                                    ></i>
                                                 </span>
-                                                <div
-                                                    className="prose prose-sm prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400"
-                                                    dangerouslySetInnerHTML={{ __html: item.description }}
-                                                />
-                                            </li>
+                                                <p className="text-sm leading-relaxed font-medium">{item.title}</p>
+                                            </div>
                                         ))}
-                                    </ol>
+                                    </div>
                                 </div>
                             )}
                         </div>
