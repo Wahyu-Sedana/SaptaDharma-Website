@@ -61,23 +61,23 @@ export default function Books() {
         <div>
             <Hero hero={hero} breadcrumb="Buku" compact />
 
-            <section className="bg-slate-950 py-16">
+            <section className="py-16">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
                         <div>
                             <div className="mb-3 h-1 w-10 rounded-full bg-green-500" />
-                            <h1 className="text-3xl font-bold text-white sm:text-4xl">Daftar Pustaka dan Dokumen</h1>
-                            <p className="mt-2 text-slate-400">Sumber ajaran, sejarah, dan pedoman Sapta Darma</p>
+                            <h1 className="text-3xl font-bold text-slate-900 sm:text-4xl dark:text-white">Daftar Pustaka dan Dokumen</h1>
+                            <p className="mt-2 text-slate-600 dark:text-slate-400">Sumber ajaran, sejarah, dan pedoman Sapta Darma</p>
                         </div>
 
                         <form onSubmit={submitSearch} className="relative w-full max-w-xs">
-                            <i className="fas fa-search absolute top-1/2 left-4 -translate-y-1/2 text-slate-500"></i>
+                            <i className="fas fa-search absolute top-1/2 left-4 -translate-y-1/2 text-slate-400 dark:text-slate-500"></i>
                             <input
                                 type="text"
                                 value={searchInput}
                                 onChange={(e) => setSearchInput(e.target.value)}
                                 placeholder="Cari dokumen..."
-                                className="w-full rounded-full border border-white/10 bg-white/5 py-3 pr-4 pl-11 text-sm text-white placeholder:text-slate-500 focus:border-green-500 focus:outline-none"
+                                className="w-full rounded-full border border-slate-200 bg-slate-50 py-3 pr-4 pl-11 text-sm text-slate-900 placeholder:text-slate-400 focus:border-green-500 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-slate-500"
                             />
                         </form>
                     </div>
@@ -89,7 +89,7 @@ export default function Books() {
                             className={`rounded-full px-4 py-2 text-sm font-medium transition ${
                                 !category
                                     ? 'bg-green-500 text-white shadow-lg shadow-green-500/25'
-                                    : 'border border-white/10 bg-white/5 text-slate-300 hover:bg-white/10'
+                                    : 'bg-slate-100 text-slate-600 hover:bg-green-50 dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-green-500/10'
                             }`}
                         >
                             Semua
@@ -102,7 +102,7 @@ export default function Books() {
                                 className={`rounded-full px-4 py-2 text-sm font-medium transition ${
                                     category === cat.slug
                                         ? 'bg-green-500 text-white shadow-lg shadow-green-500/25'
-                                        : 'border border-white/10 bg-white/5 text-slate-300 hover:bg-white/10'
+                                        : 'bg-slate-100 text-slate-600 hover:bg-green-50 dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-green-500/10'
                                 }`}
                             >
                                 {cat.name}
@@ -111,16 +111,16 @@ export default function Books() {
                     </div>
 
                     {books?.length === 0 ? (
-                        <p className="text-slate-400">Tidak ada dokumen yang ditemukan.</p>
+                        <p className="text-slate-500 dark:text-slate-400">Tidak ada dokumen yang ditemukan.</p>
                     ) : (
                         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                             {books.map((book) => (
                                 <Link
                                     key={book.id}
                                     to={`/buku/${book.slug}`}
-                                    className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-slate-900/60 transition duration-300 hover:-translate-y-1 hover:border-green-500/40"
+                                    className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-900/5 transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:bg-slate-900 dark:ring-white/10"
                                 >
-                                    <div className="overflow-hidden bg-slate-800">
+                                    <div className="overflow-hidden bg-slate-100 dark:bg-slate-800">
                                         <img
                                             src={book.cover}
                                             alt={book.title}
@@ -128,13 +128,13 @@ export default function Books() {
                                         />
                                     </div>
                                     <div className="flex flex-1 flex-col p-5">
-                                        <span className="mb-3 inline-flex w-fit items-center rounded-full border border-green-500/40 px-3 py-1 text-xs font-semibold tracking-wide text-green-400 uppercase">
+                                        <span className="mb-3 inline-flex w-fit items-center rounded-full border border-green-500/40 px-3 py-1 text-xs font-semibold tracking-wide text-green-600 uppercase dark:text-green-400">
                                             {book.category?.name}
                                         </span>
-                                        <h3 className="font-semibold text-white transition group-hover:text-green-400">
+                                        <h3 className="font-semibold text-slate-900 transition group-hover:text-green-600 dark:text-white dark:group-hover:text-green-400">
                                             {book.title}
                                         </h3>
-                                        <p className="mt-2 flex items-center gap-2 text-sm text-slate-400">
+                                        <p className="mt-2 flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
                                             <i className="far fa-file-alt"></i>
                                             {book.category?.name}
                                             {book.year && (
@@ -145,7 +145,7 @@ export default function Books() {
                                             )}
                                         </p>
                                         <div className="mt-auto pt-4">
-                                            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-sm font-medium text-white transition group-hover:border-green-500 group-hover:text-green-400">
+                                            <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 transition group-hover:border-green-500 group-hover:text-green-600 dark:border-white/15 dark:text-slate-200 dark:group-hover:text-green-400">
                                                 Baca dokumen
                                                 <i className="fas fa-arrow-right text-xs transition group-hover:translate-x-1"></i>
                                             </span>
@@ -166,7 +166,7 @@ export default function Books() {
                                     className={`h-10 w-10 rounded-full text-sm font-medium transition ${
                                         meta.current_page === p
                                             ? 'bg-green-500 text-white shadow-lg shadow-green-500/25'
-                                            : 'border border-white/10 bg-white/5 text-slate-300 hover:bg-white/10'
+                                            : 'bg-slate-100 text-slate-600 hover:bg-green-50 dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-green-500/10'
                                     }`}
                                 >
                                     {p}
