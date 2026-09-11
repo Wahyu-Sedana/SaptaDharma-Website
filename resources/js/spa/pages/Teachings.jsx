@@ -31,6 +31,7 @@ export default function Teachings() {
                         <SectionHeading
                             eyebrow={sections.values.subtitle}
                             title={sections.values.title}
+                            description={sections.values.description}
                             align="center"
                         />
 

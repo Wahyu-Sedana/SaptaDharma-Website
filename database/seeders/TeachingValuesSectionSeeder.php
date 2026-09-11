@@ -25,8 +25,8 @@ class TeachingValuesSectionSeeder extends Seeder
                 'title' => ['id' => 'Wewarah Tujuh', 'en' => 'The Seven Teachings'],
                 'subtitle' => ['id' => 'Ajaran', 'en' => 'Teachings'],
                 'description' => [
-                    'id' => 'Nilai-nilai budi luhur yang menjadi pedoman perilaku warga Sapta Darma sehari-hari.',
-                    'en' => 'The noble values that guide the daily conduct of Sapta Darma members.',
+                    'id' => 'Kewajiban Warga Sapta Darma',
+                    'en' => 'Duties of Sapta Darma Members',
                 ],
                 'sort_order' => $maxSortOrder + 1,
                 'status' => 'publish',

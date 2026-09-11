@@ -66,7 +66,7 @@ export default function Books() {
                     <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
                         <div>
                             <div className="mb-3 h-1 w-10 rounded-full bg-green-500" />
-                            <h1 className="text-3xl font-bold text-white sm:text-4xl">Koleksi Dokumen</h1>
+                            <h1 className="text-3xl font-bold text-white sm:text-4xl">Daftar Pustaka dan Dokumen</h1>
                             <p className="mt-2 text-slate-400">Sumber ajaran, sejarah, dan pedoman Sapta Darma</p>
                         </div>
 
